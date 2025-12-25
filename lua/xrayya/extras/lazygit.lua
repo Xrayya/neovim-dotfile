@@ -7,5 +7,8 @@ return {
     init = function()
       vim.g.lazygit_floating_window_scaling_factor = 0.8
     end,
+    keys = {
+      { "<Leader>gt", "<CMD>LazyGit<CR>", mode = { "n" }, desc = "Open LazyGit" },
+    },
   },
 }
