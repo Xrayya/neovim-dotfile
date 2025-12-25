@@ -81,7 +81,6 @@ local M = {
     NewFile           = "",
     FindFile          = "󰈞",
     RecentFile        = "󱋡",
-    Search            = "",
     Lightbulb         = "",
     Project           = "",
     Dashboard         = "",
@@ -91,7 +90,6 @@ local M = {
     Comment           = "",
     Bug               = "",
     Code              = "",
-    Enter             = "﬌",
     GoTo              = "",
     HighPriority      = "󰘃",
     LSP               = "󰿘",
@@ -100,17 +98,13 @@ local M = {
     Path              = "",
     Refresh           = "",
     Socket            = "",
-    Package           = "",
     List              = "",
     SignIn            = "",
     SignOut           = "",
-    Check             = "",
     Label             = "",
     LabelOutline      = "",
     Fire              = "",
-    Note              = "",
     BookMark          = "",
-    Pencil1           = "",
     Pencil2           = "✎",
     ChevronRight      = "",
     Table             = "",
@@ -120,7 +114,12 @@ local M = {
     Calendar          = "",
     CloudDownload     = "",
     Database          = "",
-    Latex             = ""
+    Latex             = "",
+    CmdStart          = "",
+    SearchDown        = " ",
+    SearchUp          = " ",
+    Help              = " ",
+    Input             = "󰥻 "
   },
   -- stylua: ignore
   diagnostics = {
@@ -141,13 +140,11 @@ local M = {
   },
   -- stylua: ignore
   misc = {
-    Robot    = "ﮧ",
     Tabnine  = "󰫈 ",
     Luasnip  = "󰩫",
     Squirrel = "",
     Tag      = "",
     Watch    = "",
-    Smiley   = "ﲃ",
   },
 }
 
