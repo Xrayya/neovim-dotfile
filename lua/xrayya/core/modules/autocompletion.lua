@@ -210,11 +210,10 @@ return {
         },
       })
 
-      -- integration with cmp-autopairs
-      cmp.event:on(
-        "confirm_done",
-        require("nvim-autopairs.completion.cmp").on_confirm_done({ map_char = { tex = "" } })
-      )
+      local is_ok, autopairs_integration = pcall(require, "nvim-autopairs.completion.cmp")
+      if is_ok then
+        cmp.event:on("confirm_done", autopairs_integration.on_confirm_done({ map_char = { tex = "" } }))
+      end
     end,
   },
 }
