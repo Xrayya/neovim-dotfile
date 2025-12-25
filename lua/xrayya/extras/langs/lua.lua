@@ -18,8 +18,9 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    opts = {
-      ensure_setup = { "lua_ls" }
-    }
+    opts = function (_, opts)
+      opts.servers = opts.servers or {}
+      opts.servers["lua_ls"] = {}
+    end
   }
 }
