@@ -48,11 +48,7 @@ return {
       "hrsh7th/cmp-cmdline",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
-      {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        opts = { check_ts = true }
-      },
+      "windwp/nvim-autopairs",
       {
         "L3MON4D3/cmp-luasnip-choice",
         config = function()
@@ -91,7 +87,6 @@ return {
               vim_item.kind = icons.misc.Tabnine
               vim_item.kind_hl_group = "CmpItemKindTabNine"
             end
-
 
             vim_item.menu = ({
               buffer = icons.ui.Buffer,
