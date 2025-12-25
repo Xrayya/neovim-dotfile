@@ -24,6 +24,7 @@ require("lazy").setup({
       "folke/tokyonight.nvim",
       lazy = false,
       priority = 1000,
+      ---@module "tokyonight"
       ---@type tokyonight.Config
       opts = {
         style = "night",
