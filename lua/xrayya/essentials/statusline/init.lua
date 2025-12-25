@@ -5,8 +5,8 @@ return {
   event = "VeryLazy",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
-    local components = require("xrayya.extras.essentials.statusline.components")
-    local custom_extension = require("xrayya.extras.essentials.statusline.custom_extensions")
+    local components = require("xrayya.essentials.statusline.components")
+    local custom_extension = require("xrayya.essentials.statusline.custom_extensions")
 
     require("lualine").setup({
       options = {
