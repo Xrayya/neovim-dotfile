@@ -27,6 +27,7 @@ return {
       { "grr",       desc = "Go to reference(s)" },
       { "grt",       desc = "Go to type definition(s)" },
       { "<Leader>f", group = "Find" },
+      { "<Leader>g", group = "Git" },
     })
   end,
 }
