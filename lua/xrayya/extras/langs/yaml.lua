@@ -10,11 +10,17 @@ return {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
       opts.servers = opts.servers or {}
-      opts.servers["jsonls"] = {
+      opts.servers["yamlls"] = {
         settings = {
-          json = {
-            schemas = require("schemastore").json.schemas(),
-            validate = { enable = true },
+          yaml = {
+            hover = true,
+            completion = true,
+            validate = true,
+            schemaStore = {
+              enable = true,
+              url = "https://www.schemastore.org/api/json/catalog.json",
+            },
+            schemas = require("schemastore").yaml.schemas(),
           },
         },
       }
@@ -26,7 +32,7 @@ return {
     ---@type TSConfig
     ---@diagnostic disable-next-line: missing-fields
     opts = {
-      ensure_installed = { "json", "jsonc", "json5", "comment" },
+      ensure_installed = { "yaml", "comment" },
     },
   },
   {
@@ -35,7 +41,7 @@ return {
       opts.ensure_installed = opts.ensure_installed or {}
 
       opts.ensure_installed =
-          require("xrayya.utils.lsp").check_ensure_installed({ "jsonls" }, opts.ensure_installed)
+          require("xrayya.utils.lsp").check_ensure_installed({ "yamlls" }, opts.ensure_installed)
     end,
   },
 }

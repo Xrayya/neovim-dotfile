@@ -7,7 +7,7 @@ return {
     ---@type TSConfig
     ---@diagnostic disable-next-line: missing-fields
     opts = {
-      ensure_installed = { "lua", "luadoc", "comment" },
+      ensure_installed = { "html", "css", "comment" },
     },
   },
   {
@@ -16,14 +16,15 @@ return {
       opts.ensure_installed = opts.ensure_installed or {}
 
       opts.ensure_installed =
-          require("xrayya.utils.lsp").check_ensure_installed({ "lua_ls" }, opts.ensure_installed)
+          require("xrayya.utils.lsp").check_ensure_installed({ "html", "emmet_ls", "cssls" }, opts.ensure_installed)
     end,
   },
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
       opts.servers = opts.servers or {}
-      opts.servers["lua_ls"] = {}
+      opts.servers["html"] = {}
+      opts.servers["cssls"] = {}
     end,
   },
 }
