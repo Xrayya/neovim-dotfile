@@ -97,6 +97,32 @@ Some notable extras:
 
 ---
 
+## ✨ Preview
+
+A quick look at how this Neovim setup feels in daily use.
+
+### Editing Experience
+Clean syntax highlighting, LSP diagnostics, and completion out of the box.
+
+![Editing](https://github.com/user-attachments/assets/4c7f3fc2-0920-49e7-9a13-ade4c74294f4)
+
+### Navigation & Search
+Fast project-wide navigation powered by Telescope.
+
+![Telescope](https://github.com/user-attachments/assets/6dbf940d-3833-4c3c-9ade-72ecadc519de)
+
+### Git Integration
+Inline Git signs and context-aware diffs for real-world workflows.
+
+![Git](https://github.com/user-attachments/assets/d86f9dfa-4dda-4023-974e-f411b9e3e12f)
+
+### Optional Extras
+Additional UI enhancements and tools you can opt into.
+
+![Extras](https://github.com/user-attachments/assets/80e31d89-69ab-4bd4-b012-81977c86ba65)
+
+---
+
 ## 🎨 My Preferences, My Taste
 
 This is my **personal** Neovim configuration, designed primarily for how I work and think.
