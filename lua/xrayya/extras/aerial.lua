@@ -41,5 +41,8 @@ return {
         Variable = icons.kind.Variable,
       },
     },
+    keys = {
+      { "gro", "<CMD>AerialToggle<CR>", mode = { "n" }, desc = "Toggle symbols outline" },
+    },
   },
 }
