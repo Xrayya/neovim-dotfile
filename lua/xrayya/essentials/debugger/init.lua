@@ -7,7 +7,7 @@ return {
   {
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = {
-      "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
       opts = {},
     },
     opts = {},
