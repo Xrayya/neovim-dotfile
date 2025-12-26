@@ -18,6 +18,8 @@ My personal Neovim configuration — built with **modularity**, **lightweight de
 
 2. Open Neovim and let it automatically install all required dependencies.
 
+3. You might want to update the all the plugins with `:Lazy sync` since I keep `lazy-lock.json` tracked and might out of date. You might also want to remove the lockfile altogether, it's your choice. I keep the `lazy-lock.json` because I need it.
+
 That’s it.
 
 ---
