@@ -9,6 +9,6 @@ return {
       enable_close = true,
       enable_close_on_slash = false,
       enable_rename = false,
-    }
-  }
+    },
+  },
 }

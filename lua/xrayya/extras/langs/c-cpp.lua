@@ -26,7 +26,7 @@ end, {})
 
 local query_driver, resource_dir
 if vim.fn.has("win32") > 0 then
-  query_driver = os.getenv("CLANGD_QUERY_DRIVER_PATH")      -- e.g "C:\\Users\\Hary\\scoop\\apps\\msys2\\current\\mingw64\\bin\\g++.exe"
+  query_driver = os.getenv("CLANGD_QUERY_DRIVER_PATH")       -- e.g "C:\\Users\\Hary\\scoop\\apps\\msys2\\current\\mingw64\\bin\\g++.exe"
   resource_dir = os.getenv("CLANGD_QUERY_RESOURCE_DIR_PATH") -- e.g "C:\\Users\\Hary\\scoop\\apps\\msys2\\current\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\12.2.0\\"
 end
 
@@ -71,8 +71,7 @@ return {
     opts = function(_, opts)
       opts.ensure_installed = opts.ensure_installed or {}
 
-      opts.ensure_installed =
-          require("xrayya.utils.lsp").check_ensure_installed({ "clangd" }, opts.ensure_installed)
+      opts.ensure_installed = require("xrayya.utils.lsp").check_ensure_installed({ "clangd" }, opts.ensure_installed)
     end,
   },
 }

@@ -15,8 +15,7 @@ return {
     opts = function(_, opts)
       opts.ensure_installed = opts.ensure_installed or {}
 
-      opts.ensure_installed =
-          require("xrayya.utils.lsp").check_ensure_installed({ "ts_ls" }, opts.ensure_installed)
+      opts.ensure_installed = require("xrayya.utils.lsp").check_ensure_installed({ "ts_ls" }, opts.ensure_installed)
     end,
   },
   {

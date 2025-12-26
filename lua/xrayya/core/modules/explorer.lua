@@ -8,7 +8,7 @@ return {
     "nvim-tree/nvim-tree.lua",
     event = "VeryLazy",
     keys = {
-      { "<Leader>e", "<cmd>NvimTreeToggle<cr>" }
+      { "<Leader>e", "<cmd>NvimTreeToggle<cr>" },
     },
     opts = {
       sync_root_with_cwd = true,
@@ -71,4 +71,3 @@ return {
     },
   },
 }
-

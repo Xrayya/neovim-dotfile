@@ -3,7 +3,7 @@ local icons = require("xrayya.icons")
 ---@module "lazy"
 ---@type LazySpec
 return {
-  { "nvim-tree/nvim-web-devicons", lazy = true },
+  { "nvim-tree/nvim-web-devicons",     lazy = true },
   { "nvim-treesitter/nvim-treesitter", lazy = true },
   {
     "stevearc/aerial.nvim",

@@ -19,13 +19,9 @@ M.check_ensure_installed = function(servers, ensure_installed_var, custom_mappin
       end
 
       if vim.fn.executable(custom_server_mapping) < 1 then
-        vim.notify(
-          '"' .. custom_server_mapping .. '" is not installed and need manual install',
-          vim.log.levels.ERROR,
-          {
-            title = "Xrayya LSPs Settings",
-          }
-        )
+        vim.notify('"' .. custom_server_mapping .. '" is not installed and need manual install', vim.log.levels.ERROR, {
+          title = "Xrayya LSPs Settings",
+        })
       end
       goto continue
     end
