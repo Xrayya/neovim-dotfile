@@ -64,7 +64,7 @@ Some notable ones:
 Quality-of-life improvements such as statusline, snippets, and Git integration.
 Some highlights:
 
-- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) (customized)
+- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) (customized, see [here](https://github.com/Xrayya/neovim-dotfile/blob/main/lua/xrayya/essentials/statusline/init.lua))
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter), with:
   - [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
   - [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context)
