@@ -3,7 +3,67 @@ local dapui_layouts = require("xrayya.essentials.debugger.layout")
 ---@module "lazy"
 ---@type LazySpec
 return {
-  { "mfussenegger/nvim-dap" },
+  {
+    "mfussenegger/nvim-dap",
+    keys = {
+      {
+        "<F5>",
+        function()
+          require("dap").continue()
+        end,
+        mode = { "n" },
+        desc = "Start debugger",
+      },
+      {
+        "<S-F5>",
+        function()
+          require("dap").stop()
+        end,
+        mode = { "n" },
+        desc = "Stop debug session",
+      },
+      {
+        "<F10>",
+        function()
+          require("dap").step_over()
+        end,
+        mode = { "n" },
+        desc = "Step over",
+      },
+      {
+        "<F11>",
+        function()
+          require("dap").step_into()
+        end,
+        mode = { "n" },
+        desc = "Step over",
+      },
+      {
+        "<S-F11>",
+        function()
+          require("dap").step_out()
+        end,
+        mode = { "n" },
+        desc = "Step over",
+      },
+      {
+        "<F9>",
+        function()
+          require("dap").toggle_breakpoint()
+        end,
+        mode = { "n" },
+        desc = "Step over",
+      },
+      {
+        "<S-F9>",
+        function()
+          require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+        end,
+        mode = { "n" },
+        desc = "Set conditional breakpoint",
+      },
+    },
+  },
   {
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = {
@@ -17,6 +77,14 @@ return {
     dependencies = {
       "mfussenegger/nvim-dap",
       "nvim-neotest/nvim-nio",
+      {
+        "folke/lazydev.nvim",
+        opts = {
+          library = {
+            { "nvim-dap-ui" },
+          },
+        },
+      },
     },
     ---@module "dapui"
     ---@type dapui.Config
