@@ -1,0 +1,67 @@
+---@module "lazy"
+---@type LazySpec
+return {
+  {
+    "nvim-treesitter/nvim-treesitter",
+    ---@module "nvim-treesitter"
+    ---@type TSConfig
+    ---@diagnostic disable-next-line: missing-fields
+    opts = {
+      ensure_installed = { "dart" },
+    },
+  },
+  {
+    "akinsho/flutter-tools.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "mfussenegger/nvim-dap",
+    },
+    ---@module "flutter-tools"
+    ---@type flutter.Config
+    opts = {
+      debugger = {
+        enabled = true,
+      },
+      dev_log = {
+        enabled = false,
+      },
+      fvm = vim.fn.executable("fvm") == 1,
+      lsp = {
+        capabilities = function(config)
+          local is_ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+          if is_ok then
+            vim.tbl_deep_extend("force", config, cmp_lsp.default_capabilities())
+          end
+          return config
+        end,
+      },
+      settings = {
+        renameFilesWithClasses = "always",
+      },
+      widget_guides = {
+        enabled = true,
+      },
+    },
+    config = function(_, opts)
+      require("flutter-tools").setup(opts)
+
+      local dap = require("dap")
+
+      vim.api.nvim_create_user_command("FlutterHotReload", function(_)
+        if dap.status() ~= "" then
+          dap.repl.execute(".hot-reload")
+        end
+      end, {})
+
+      vim.api.nvim_create_augroup("FlutterHotReload", {})
+      vim.api.nvim_create_autocmd({ "BufWritePost", "FileWritePost" }, {
+        pattern = { "*.dart" },
+        group = "FlutterHotReload",
+        callback = function(_)
+          vim.cmd("FlutterHotReload")
+        end,
+      })
+    end,
+  },
+}
