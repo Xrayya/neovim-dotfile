@@ -29,6 +29,14 @@ return {
         desc = "Stop debug session",
       },
       {
+        "<F17>", -- in case terminal process it this way
+        function()
+          require("dap").terminate()
+        end,
+        mode = { "n" },
+        desc = "Stop debug session",
+      },
+      {
         "<F10>",
         function()
           require("dap").step_over()
@@ -53,6 +61,14 @@ return {
         desc = "Step over",
       },
       {
+        "<F23>", -- in case terminal process it this way
+        function()
+          require("dap").step_out()
+        end,
+        mode = { "n" },
+        desc = "Step over",
+      },
+      {
         "<F9>",
         function()
           require("dap").toggle_breakpoint()
@@ -62,6 +78,14 @@ return {
       },
       {
         "<S-F9>",
+        function()
+          require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+        end,
+        mode = { "n" },
+        desc = "Set conditional breakpoint",
+      },
+      {
+        "<F21>", -- in case terminal process it this way
         function()
           require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
         end,
