@@ -5,6 +5,12 @@ local dapui_layouts = require("xrayya.essentials.debugger.layout")
 return {
   {
     "mfussenegger/nvim-dap",
+    config = function(_, _)
+      local is_ok, overseer = pcall(require, "overseer")
+      if is_ok then
+        overseer.enable_dap()
+      end
+    end,
     keys = {
       {
         "<F5>",
