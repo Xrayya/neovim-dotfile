@@ -201,23 +201,41 @@ return {
 
       setup_dap_with_layout(dapui_layouts.running_console)
 
-      vim.api.nvim_create_user_command("DapSetupRunningConsole", function(_)
+      vim.api.nvim_create_user_command("DapuiLayoutRunningConsole", function(_)
         setup_dap_with_layout(dapui_layouts.running_console)
       end, {})
-      vim.api.nvim_create_user_command("DapSetupRunning", function(_)
+      vim.api.nvim_create_user_command("DapuiLayoutRunning", function(_)
         setup_dap_with_layout(dapui_layouts.running)
       end, {})
-      vim.api.nvim_create_user_command("DapSetupDebugging", function(_)
+      vim.api.nvim_create_user_command("DapuiLayoutDebugging", function(_)
         setup_dap_with_layout(dapui_layouts.debugging)
       end, {})
-      vim.api.nvim_create_user_command("DapSetupDebuggingConsole", function(_)
+      vim.api.nvim_create_user_command("DapuiLayoutDebuggingConsole", function(_)
         setup_dap_with_layout(dapui_layouts.debugging_console)
       end, {})
 
-      vim.api.nvim_create_user_command("DapUIToggle", function(_)
+      vim.api.nvim_create_user_command("DapuiToggle", function(_)
         dapui.toggle()
       end, {})
+
     end,
+    cmd = {
+      "DapuiLayoutRunningConsole",
+      "DapuiLayoutRunning",
+      "DapuiLayoutDebugging",
+      "DapuiLayoutDebuggingConsole",
+      "DapUIToggle",
+    },
+    keys = {
+      {
+        "<Leader>d",
+        function()
+          require("dapui").toggle()
+        end,
+        mode = { "n" },
+        desc = "Toggle DAP UI",
+      },
+    },
   },
   {
     "theHamsta/nvim-dap-virtual-text",
