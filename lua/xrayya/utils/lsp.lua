@@ -18,7 +18,7 @@ M.check_ensure_installed = function(servers, ensure_installed_var, custom_mappin
         goto continue
       end
 
-      if vim.fn.executable(custom_server_mapping) < 1 then
+      if vim.fn.executable(custom_server_mapping) == 0 then
         vim.notify('"' .. custom_server_mapping .. '" is not installed and need manual install', vim.log.levels.ERROR, {
           title = "Xrayya LSPs Settings",
         })
@@ -27,7 +27,7 @@ M.check_ensure_installed = function(servers, ensure_installed_var, custom_mappin
     end
 
     local server_package = require("mason-registry").get_package(server_mapping)
-    if vim.fn.executable(vim.tbl_keys(server_package.spec.bin)[1]) < 1 then
+    if vim.fn.executable(vim.tbl_keys(server_package.spec.bin)[1]) == 0 then
       table.insert(ensure_installed_var, 1, server)
     end
     ::continue::
