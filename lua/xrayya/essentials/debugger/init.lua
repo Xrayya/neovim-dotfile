@@ -100,7 +100,16 @@ return {
       "mason-org/mason.nvim",
       opts = {},
     },
-    opts = {},
+    ---@module "mason-nvim-dap"
+    ---@type MasonNvimDapSettings
+    ---@diagnostic disable-next-line: missing-fields
+    opts = {
+      handlers = {
+        function(config)
+          require("mason-nvim-dap").default_setup(config)
+        end,
+      },
+    },
   },
   {
     "rcarriga/nvim-dap-ui",
