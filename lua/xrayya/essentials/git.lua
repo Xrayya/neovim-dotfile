@@ -37,7 +37,7 @@ return {
             gitsigns.blame_line({ full = true })
           end, { desc = "Blame line" })
 
-          map("n", "<Leader>>gB", gitsigns.toggle_current_line_blame, { desc = "Toggle line blame" })
+          map("n", "<Leader>gB", gitsigns.toggle_current_line_blame, { desc = "Toggle line blame" })
 
           map("n", "<Leader>gd", gitsigns.diffthis, { desc = "Diff to index" })
           map("n", "<Leader>gD", function()
@@ -67,7 +67,7 @@ return {
           end, { desc = "Stage hunk" })
           map("n", "<Leader>gS", gitsigns.stage_buffer, { desc = "Stage current buffer" })
 
-          map("n", "<Leader>>gw", gitsigns.toggle_word_diff, { desc = "Toggle word diff" })
+          map("n", "<Leader>gw", gitsigns.toggle_word_diff, { desc = "Toggle word diff" })
 
           map("n", "]c", function()
             if vim.wo.diff then
