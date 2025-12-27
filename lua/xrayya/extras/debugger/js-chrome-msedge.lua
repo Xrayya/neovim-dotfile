@@ -16,6 +16,8 @@ return {
       opts.configurations = opts.configurations or {}
 
       for _, adapterType in ipairs({ "node", "chrome", "msedge" }) do
+        -- NOTE: this particular line is so important yet so weird.
+        -- If your change it to another name, the debugger wont run and keep disconnecting
         local pwaType = "pwa-" .. adapterType
 
         opts.adapters[pwaType] = {
