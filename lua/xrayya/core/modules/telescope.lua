@@ -136,6 +136,9 @@ return {
       telescope.load_extension("fzf")
       telescope.load_extension("ui-select")
     end,
+    cmd = {
+      "Telescope",
+    },
     keys = {
       {
         "<Leader>b",
