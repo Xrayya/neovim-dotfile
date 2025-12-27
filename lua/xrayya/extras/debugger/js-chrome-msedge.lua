@@ -23,9 +23,8 @@ return {
           host = "localhost",
           port = "${port}",
           executable = {
-            command = "node",
+            command = vim.fn.exepath("js-debug-adapter"),
             args = {
-              vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
               "${port}",
             },
           },
