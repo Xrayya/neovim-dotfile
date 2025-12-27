@@ -50,7 +50,7 @@ return {
           require("dap").step_into()
         end,
         mode = { "n" },
-        desc = "Step over",
+        desc = "Step into",
       },
       {
         "<S-F11>",
@@ -58,7 +58,7 @@ return {
           require("dap").step_out()
         end,
         mode = { "n" },
-        desc = "Step over",
+        desc = "Step out",
       },
       {
         "<F23>", -- in case terminal process it this way
@@ -66,7 +66,7 @@ return {
           require("dap").step_out()
         end,
         mode = { "n" },
-        desc = "Step over",
+        desc = "Step out",
       },
       {
         "<F9>",
@@ -74,7 +74,7 @@ return {
           require("dap").toggle_breakpoint()
         end,
         mode = { "n" },
-        desc = "Step over",
+        desc = "Toggle breakpoint",
       },
       {
         "<S-F9>",
