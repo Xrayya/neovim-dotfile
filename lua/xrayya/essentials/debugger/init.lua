@@ -23,7 +23,7 @@ return {
       {
         "<S-F5>",
         function()
-          require("dap").stop()
+          require("dap").terminate()
         end,
         mode = { "n" },
         desc = "Stop debug session",
