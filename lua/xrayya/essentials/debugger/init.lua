@@ -84,7 +84,28 @@ return {
       {
         "<S-F9>",
         function()
-          require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+          vim.ui.select({ "normal", "condition", "hit condition", "log message" }, {
+            prompt = "Select the type of breakpoint:",
+            format_item = function(item)
+              local format = "Set breakpoint"
+              if item == "normal" then
+                format = format .. " (normal)"
+              else
+                format = format .. " with " .. item
+              end
+              return format
+            end,
+          }, function(item, _)
+            if item == "normal" then
+              require("dap").set_breakpoint()
+            elseif item == "condition" then
+              require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+            elseif item == "hit condition" then
+              require("dap").set_breakpoint(nil, vim.fn.input("Breakpoint hit condition: "))
+            elseif item == "log message" then
+              require("dap").set_breakpoint(nil, nil, vim.fn.input("Log message: "))
+            end
+          end)
         end,
         mode = { "n" },
         desc = "Set conditional breakpoint",
@@ -92,7 +113,28 @@ return {
       {
         "<F21>", -- in case terminal process it this way
         function()
-          require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+          vim.ui.select({ "normal", "condition", "hit condition", "log message" }, {
+            prompt = "Select the type of breakpoint:",
+            format_item = function(item)
+              local format = "Set breakpoint"
+              if item == "normal" then
+                format = format .. " (normal)"
+              else
+                format = format .. " with " .. item
+              end
+              return format
+            end,
+          }, function(item, _)
+            if item == "normal" then
+              require("dap").set_breakpoint()
+            elseif item == "condition" then
+              require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+            elseif item == "hit condition" then
+              require("dap").set_breakpoint(nil, vim.fn.input("Breakpoint hit condition: "))
+            elseif item == "log message" then
+              require("dap").set_breakpoint(nil, nil, vim.fn.input("Log message: "))
+            end
+          end)
         end,
         mode = { "n" },
         desc = "Set conditional breakpoint",
