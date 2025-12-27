@@ -157,9 +157,12 @@ return {
       vim.api.nvim_create_user_command("DapSetupDebuggingConsole", function(_)
         setup_dap_with_layout(dapui_layouts.debugging_console)
       end, {})
+
+      vim.api.nvim_create_user_command("DapUIToggle", function(_)
+        dapui.toggle()
+      end, {})
     end,
   },
-
   {
     "theHamsta/nvim-dap-virtual-text",
     dependencies = {
