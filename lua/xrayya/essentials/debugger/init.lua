@@ -218,24 +218,10 @@ return {
         dapui.toggle()
       end, {})
 
+      vim.keymap.set("n", "<Leader>d", function()
+        require("dapui").toggle()
+      end, { desc = "Toggle DAP UI" })
     end,
-    cmd = {
-      "DapuiLayoutRunningConsole",
-      "DapuiLayoutRunning",
-      "DapuiLayoutDebugging",
-      "DapuiLayoutDebuggingConsole",
-      "DapUIToggle",
-    },
-    keys = {
-      {
-        "<Leader>d",
-        function()
-          require("dapui").toggle()
-        end,
-        mode = { "n" },
-        desc = "Toggle DAP UI",
-      },
-    },
   },
   {
     "theHamsta/nvim-dap-virtual-text",
