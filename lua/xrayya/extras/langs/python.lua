@@ -5,8 +5,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       opts = require("xrayya.utils.treesitter").extend(opts, {
-        ensure_installed = { "python" },
-        ensure_highlight = { "python" },
+        ensure_installed = { "python", "comment" },
+        ensure_highlight = { "python", "comment" },
         ensure_indent = { "python" },
         ensure_fold = { "python" },
       })

@@ -5,8 +5,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       opts = require("xrayya.utils.treesitter").extend(opts, {
-        ensure_installed = { "dart" },
-        ensure_highlight = { "dart" },
+        ensure_installed = { "dart", "comment" },
+        ensure_highlight = { "dart", "comment" },
         ensure_indent = { "dart" },
         ensure_fold = { "dart" },
       })
