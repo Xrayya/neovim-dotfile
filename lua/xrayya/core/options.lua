@@ -21,6 +21,7 @@ set.splitbelow = true
 set.splitright = true
 set.conceallevel = 0
 set.signcolumn = "yes:2"
+set.foldcolumn = "0"
 set.tabstop = 2
 set.shiftwidth = 2
 set.softtabstop = 2
@@ -44,6 +45,14 @@ set.timeoutlen = 300
 set.clipboard:append({ "unnamedplus" })
 set.shortmess:append("c")
 set.termguicolors = true
+set.foldlevel = 99
+set.foldlevelstart = 99
+vim.opt.fillchars:append({
+  fold = " ",
+  foldopen = "",
+  foldclose = "",
+  foldsep = " ",
+})
 
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
