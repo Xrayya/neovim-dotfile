@@ -20,6 +20,7 @@ return {
         preview_config = {
           border = "rounded",
         },
+        sign_priority = 100,
         on_attach = function(bufnr)
           local gitsigns = require("gitsigns")
 
