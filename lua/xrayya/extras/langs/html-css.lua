@@ -3,12 +3,14 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    ---@module "nvim-treesitter"
-    ---@type TSConfig
-    ---@diagnostic disable-next-line: missing-fields
-    opts = {
-      ensure_installed = { "html", "css", "comment" },
-    },
+    opts = function(_, opts)
+      opts = require("xrayya.utils.treesitter").extend(opts, {
+        ensure_installed = { "html", "css", "comment" },
+        ensure_highlight = { "html", "css", "comment" },
+        ensure_indent = { "html", "css" },
+        ensure_fold = { "html", "css" },
+      })
+    end,
   },
   {
     "mason-org/mason-lspconfig.nvim",

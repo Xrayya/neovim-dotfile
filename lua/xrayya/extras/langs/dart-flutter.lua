@@ -3,12 +3,14 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    ---@module "nvim-treesitter"
-    ---@type TSConfig
-    ---@diagnostic disable-next-line: missing-fields
-    opts = {
-      ensure_installed = { "dart" },
-    },
+    opts = function(_, opts)
+      opts = require("xrayya.utils.treesitter").extend(opts, {
+        ensure_installed = { "dart" },
+        ensure_highlight = { "dart" },
+        ensure_indent = { "dart" },
+        ensure_fold = { "dart" },
+      })
+    end,
   },
   {
     "akinsho/flutter-tools.nvim",

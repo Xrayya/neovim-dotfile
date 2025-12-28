@@ -22,12 +22,14 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    ---@module "nvim-treesitter"
-    ---@type TSConfig
-    ---@diagnostic disable-next-line: missing-fields
-    opts = {
-      ensure_installed = { "json", "jsonc", "json5", "comment" },
-    },
+    opts = function(_, opts)
+      opts = require("xrayya.utils.treesitter").extend(opts, {
+        ensure_installed = { "json", "json5", "comment" },
+        ensure_highlight = { "json", "json5", "comment" },
+        ensure_indent = { "json" },
+        ensure_fold = { "json" },
+      })
+    end,
   },
   {
     "mason-org/mason-lspconfig.nvim",

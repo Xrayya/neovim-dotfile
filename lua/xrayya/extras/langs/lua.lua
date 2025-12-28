@@ -3,12 +3,14 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    ---@module "nvim-treesitter"
-    ---@type TSConfig
-    ---@diagnostic disable-next-line: missing-fields
-    opts = {
-      ensure_installed = { "lua", "luadoc", "comment" },
-    },
+    opts = function(_, opts)
+      opts = require("xrayya.utils.treesitter").extend(opts, {
+        ensure_installed = { "lua", "luadoc", "comment" },
+        ensure_highlight = { "lua", "luadoc", "comment" },
+        ensure_indent = { "lua" },
+        ensure_fold = { "lua" },
+      })
+    end,
   },
   {
     "mason-org/mason-lspconfig.nvim",

@@ -3,12 +3,14 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    ---@module "nvim-treesitter"
-    ---@type TSConfig
-    ---@diagnostic disable-next-line: missing-fields
-    opts = {
-      ensure_installed = { "python" },
-    },
+    opts = function(_, opts)
+      opts = require("xrayya.utils.treesitter").extend(opts, {
+        ensure_installed = { "python" },
+        ensure_highlight = { "python" },
+        ensure_indent = { "python" },
+        ensure_fold = { "python" },
+      })
+    end,
   },
   {
     "mason-org/mason-lspconfig.nvim",

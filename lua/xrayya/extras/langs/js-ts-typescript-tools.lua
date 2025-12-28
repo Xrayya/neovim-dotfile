@@ -3,12 +3,14 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    ---@module "nvim-treesitter"
-    ---@type TSConfig
-    ---@diagnostic disable-next-line: missing-fields
-    opts = {
-      ensure_installed = { "javascript", "jsdoc", "typescript", "tsx", "comment" },
-    },
+    opts = function(_, opts)
+      opts = require("xrayya.utils.treesitter").extend(opts, {
+        ensure_installed = { "javascript", "jsx", "jsdoc", "typescript", "tsx", "comment" },
+        ensure_highlight = { "javascript", "jsx", "jsdoc", "typescript", "tsx", "comment" },
+        ensure_indent = { "javascript", "typescript", "tsx" },
+        ensure_fold = { "javascript", "typescript", "tsx" },
+      })
+    end,
   },
   {
     "mason-org/mason-lspconfig.nvim",
