@@ -7,6 +7,15 @@ return {
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
+      {
+        "nvim-treesitter/nvim-treesitter",
+        opts = function(_, opts)
+          opts = require("xrayya.utils.treesitter").extend(opts, {
+            ensure_installed = { "regex" },
+            ensure_highlight = { "regex" },
+          })
+        end,
+      },
     },
     ---@type NoiceConfig
     opts = {
