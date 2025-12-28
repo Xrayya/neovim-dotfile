@@ -1,4 +1,3 @@
-
 ---@module "lazy"
 ---@type LazySpec
 return {
@@ -161,7 +160,13 @@ return {
     "igorlfs/nvim-dap-view",
     ---@module 'dap-view'
     ---@type dapview.Config
-    opts = {},
+    opts = {
+      winbar = {
+        controls = {
+          enabled = true,
+        },
+      },
+    },
     config = function(_, opts)
       local dapview = require("dap-view")
       dapview.setup(opts)
