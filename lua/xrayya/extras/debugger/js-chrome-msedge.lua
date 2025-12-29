@@ -18,6 +18,10 @@ return {
       for _, adapterType in ipairs({ "node", "chrome", "msedge" }) do
         -- NOTE: this particular line is so important yet so weird.
         -- If your change it to another name, the debugger wont run and keep disconnecting
+
+        -- NOTE: credit to StevanFreeborn
+        -- original configuration and inspiration: https://github.com/StevanFreeborn/nvim-config/blob/main/lua/plugins/debugging.lua
+        -- explanation: https://www.youtube.com/watch?v=DVG3m7rNFKc
         local pwaType = "pwa-" .. adapterType
 
         opts.adapters[pwaType] = {
