@@ -25,6 +25,7 @@ return {
 
   {
     "neovim/nvim-lspconfig",
+    ---@param opts Xray.lspconfigOpts
     opts = function(_, opts)
       opts.servers = opts.servers or {}
       opts.servers["clangd"] = {

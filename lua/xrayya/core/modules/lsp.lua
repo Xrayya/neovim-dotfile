@@ -1,3 +1,6 @@
+---@class Xray.lspconfigOpts
+---@field servers table<string, vim.lsp.Config>
+
 ---@module "lazy"
 ---@type LazySpec
 return {
@@ -17,6 +20,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    ---@param opts Xray.lspconfigOpts
     config = function(_, opts)
       local servers = opts.servers or {}
       for server_name, server_opts in pairs(servers) do
