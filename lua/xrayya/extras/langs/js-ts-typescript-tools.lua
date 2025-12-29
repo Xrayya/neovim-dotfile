@@ -37,7 +37,6 @@ return {
             importModuleSpecifierPreference = "shortest",
           },
         },
-        capabilities = require("cmp_nvim_lsp").default_capabilities(),
         settings = {
           code_lens = "all",
           publish_diagnostic_on = "change",

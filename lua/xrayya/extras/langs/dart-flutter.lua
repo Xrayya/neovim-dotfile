@@ -29,15 +29,6 @@ return {
         enabled = false,
       },
       fvm = vim.fn.executable("fvm") == 1,
-      lsp = {
-        capabilities = function(config)
-          local is_ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
-          if is_ok then
-            vim.tbl_deep_extend("force", config, cmp_lsp.default_capabilities())
-          end
-          return config
-        end,
-      },
       settings = {
         renameFilesWithClasses = "always",
       },
