@@ -5,21 +5,23 @@ return {
     "mason-org/mason-lspconfig.nvim",
     dependencies = { "mason-org/mason.nvim" },
     opts = {},
-  },
-  {
-    "neovim/nvim-lspconfig",
     config = function(_, opts)
-      local servers = opts.servers or {}
-
-      for server_name, server_opts in pairs(servers) do
-        vim.lsp.config(server_name, server_opts)
-        vim.lsp.enable(server_name)
-      end
+      require("mason-lspconfig").setup(opts)
 
       local installed_servers = require("mason-lspconfig").get_installed_servers()
 
       for _, server in pairs(installed_servers) do
         vim.lsp.enable(server)
+      end
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    config = function(_, opts)
+      local servers = opts.servers or {}
+      for server_name, server_opts in pairs(servers) do
+        vim.lsp.config(server_name, server_opts)
+        vim.lsp.enable(server_name)
       end
     end,
   },
