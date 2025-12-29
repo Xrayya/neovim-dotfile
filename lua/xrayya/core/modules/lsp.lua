@@ -8,19 +8,10 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-    },
     config = function(_, opts)
       local servers = opts.servers or {}
 
       for server_name, server_opts in pairs(servers) do
-        local cmp_nvim_lsp_cap = {
-          capabilities = require("cmp_nvim_lsp").default_capabilities(),
-        }
-
-        server_opts = vim.tbl_deep_extend("force", server_opts, cmp_nvim_lsp_cap)
-
         vim.lsp.config(server_name, server_opts)
         vim.lsp.enable(server_name)
       end
