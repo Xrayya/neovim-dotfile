@@ -2,6 +2,24 @@
 ---@type LazySpec
 return {
   {
+    "saghen/blink.cmp",
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      sources = {
+        providers = {
+          snippets = {
+            opts = {
+              extended_filetypes = {
+                python = { "pydoc" },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       opts = require("xrayya.utils.treesitter").extend(opts, {
