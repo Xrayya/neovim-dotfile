@@ -9,7 +9,7 @@ My personal Neovim configuration — built with **modularity**, **lightweight de
 
 ## 🚀 Installation
 
-1. Clone this repository into your [`stdpath("config")`](<https://neovim.io/doc/user/builtin.html#stdpath()>), for example on Linux:
+1. Clone this repository into your [`$XDG_CONFIG_HOME`](https://neovim.io/doc/user/starting.html#%24XDG_CONFIG_HOME), for example on Linux:
 
    ```bash
    git clone https://github.com/Xrayya/neovim-dotfile.git ~/.config/nvim
