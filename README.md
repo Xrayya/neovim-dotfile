@@ -107,21 +107,31 @@ Some notable extras:
 A quick look at how this Neovim setup feels in daily use.
 
 ### Editing Experience
+
 Clean syntax highlighting, LSP diagnostics, and completion out of the box.
 
 ![Editing](https://github.com/user-attachments/assets/4c7f3fc2-0920-49e7-9a13-ade4c74294f4)
 
 ### Navigation & Search
+
 Fast project-wide navigation powered by Telescope.
 
 ![Telescope](https://github.com/user-attachments/assets/6dbf940d-3833-4c3c-9ade-72ecadc519de)
 
 ### Git Integration
+
 Inline Git signs and context-aware diffs for real-world workflows.
 
 ![Git](https://github.com/user-attachments/assets/d86f9dfa-4dda-4023-974e-f411b9e3e12f)
 
+### Running Debugger
+
+Running Chrome Debugger in React Project and stop on breakpoint
+
+![Running Chrome Debugger in React Project](https://github.com/user-attachments/assets/e7c810c5-724a-4e29-9e4a-dec65e0176e3)
+
 ### Optional Extras
+
 Additional UI enhancements and tools you can opt into.
 
 ![Extras](https://github.com/user-attachments/assets/80e31d89-69ab-4bd4-b012-81977c86ba65)
