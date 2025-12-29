@@ -50,13 +50,16 @@ Below is an overview of the plugins used in this setup.
 
 ### 🔑 Core Plugins
 
-The foundation of the configuration: editor options, keymaps, and the most critical plugins.
-Some notable ones:
+The foundation of the configuration: editor options, keymaps, and the most critical plugins. Core plugins include:
 
 - [lazy.nvim](https://github.com/folke/lazy.nvim)
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- [none-ls.nvim](https://github.com/nvimtools/none-ls.nvim)
+- [mason.nvim](https://github.com/mason-org/mason.nvim) with [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) and [mason-null-ls.nvim](https://github.com/jay-babu/mason-null-ls.nvim)
+- [lazydev.nvim](https://github.com/folke/lazydev.nvim)
+- [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
+- [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
+- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) with [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim), [telescope-ui-select.nvim](https://github.com/nvim-telescope/telescope-ui-select.nvim), and [telescope-all-recent.nvim](https://github.com/prochri/telescope-all-recent.nvim)
 - [tokyonight.nvim](https://github.com/folke/tokyonight.nvim), etc.
 
 ---
@@ -68,10 +71,12 @@ Some highlights:
 
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) (customized, see [here](https://github.com/Xrayya/neovim-dotfile/blob/main/lua/xrayya/essentials/statusline/init.lua))
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter), with:
-  - [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
+  - [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects), and more
   - [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context)
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
-- [noice.nvim](https://github.com/folke/noice.nvim), etc.
+- [noice.nvim](https://github.com/folke/noice.nvim)
+- [nvim-dap](https://github.com/mfussenegger/nvim-dap) with [mason-nvim-dap.nvim](https://github.com/jay-babu/mason-nvim-dap.nvim), [nvim-dap-view](https://github.com/igorlfs/nvim-dap-view), and [nvim-dap-virtual-text](https://github.com/theHamsta/nvim-dap-virtual-text)
+- [overseer.nvim](https://github.com/stevearc/overseer.nvim)
 
 ---
 
@@ -89,11 +94,11 @@ Some notable extras:
     - Or plain [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
       ([config](https://github.com/Xrayya/neovim-dotfile/blob/main/lua/xrayya/extras/langs/js-ts.lua))
   - [Lua](https://github.com/Xrayya/neovim-dotfile/blob/main/lua/xrayya/extras/langs/lua.lua)
-  - [JSON](https://github.com/Xrayya/neovim-dotfile/blob/main/lua/xrayya/extras/langs/json.lua) and
-    [YAML](https://github.com/Xrayya/neovim-dotfile/blob/main/lua/xrayya/extras/langs/yaml.lua), with
-    [SchemaStore.nvim](https://github.com/b0o/SchemaStore.nvim) configured
+  - [JSON](https://github.com/Xrayya/neovim-dotfile/blob/main/lua/xrayya/extras/langs/json.lua) and [YAML](https://github.com/Xrayya/neovim-dotfile/blob/main/lua/xrayya/extras/langs/yaml.lua), with [SchemaStore.nvim](https://github.com/b0o/SchemaStore.nvim) configured
+  - [Java](https://github.com/Xrayya/neovim-dotfile/blob/main/lua/xrayya/extras/langs/java-java.lua) using [nvim-java](https://github.com/nvim-java/nvim-java) which makes all necessary tools already set up and ready to go.
 - Discord presence via [cord.nvim](https://github.com/vyfor/cord.nvim)
 - Symbols outline using [aerial.nvim](https://github.com/stevearc/aerial.nvim), etc.
+- Debugger setup for [JavaScript, TypeScript, Chrome, and MSEdge](https://github.com/Xrayya/neovim-dotfile/blob/main/lua/xrayya/extras/debugger/js-chrome-msedge.lua) using [vscode-js-debug](https://github.com/microsoft/vscode-js-debug) already configured and works
 
 ---
 
