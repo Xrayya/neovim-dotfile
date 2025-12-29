@@ -2,250 +2,94 @@
 ---@type LazySpec
 return {
   {
-    "L3MON4D3/LuaSnip",
-    build = "make install_jsregexp",
-    config = function()
-      local luasnip = require("luasnip")
-
-      require("luasnip.loaders.from_vscode").lazy_load({
-        exclude = { "java" },
-      })
-
-      luasnip.filetype_extend("php", { "html" })
-      luasnip.filetype_extend("blade", { "html" })
-      luasnip.filetype_extend("javascriptreact", { "html", "jsdoc" })
-      luasnip.filetype_extend("typescriptreact", { "html", "tsdoc" })
-      luasnip.filetype_extend("javascript", { "jsdoc" })
-      luasnip.filetype_extend("typescript", { "tsdoc" })
-      luasnip.filetype_extend("lua", { "luadoc" })
-      luasnip.filetype_extend("python", { "pydoc" })
-      luasnip.filetype_extend("rust", { "rustdoc" })
-      luasnip.filetype_extend("cs", { "csharpdoc" })
-      luasnip.filetype_extend("c", { "cdoc" })
-      luasnip.filetype_extend("cpp", { "cppdoc" })
-      luasnip.filetype_extend("php", { "phpdoc" })
-      luasnip.filetype_extend("kotlin", { "kdoc" })
-      luasnip.filetype_extend("ruby", { "rdoc" })
-      luasnip.filetype_extend("sh", { "shelldoc" })
-    end,
-    keys = {
-      {
-        "<M-l>",
-        function()
-          require("luasnip").jump(1)
-        end,
-        mode = { "i", "s" },
-        desc = "Jump forward",
+    "saghen/blink.cmp",
+    dependencies = { "rafamadriz/friendly-snippets" },
+    -- use a release tag to download pre-built binaries
+    version = "1.*",
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      keymap = {
+        preset = "enter",
+        ["<Tab>"] = { "select_next", "fallback_to_mappings" },
+        ["<S-Tab>"] = { "select_prev", "fallback_to_mappings" },
+        ["<M-l>"] = { "snippet_forward", "fallback" },
+        ["<M-h>"] = { "snippet_backward", "fallback" },
       },
-      {
-        "<M-h>",
-        function()
-          require("luasnip").jump(-1)
-        end,
-        mode = { "i", "s" },
-        desc = "Jump backward",
-      },
-      {
-        "<M-L>",
-        function()
-          require("luasnip").change_choice(1)
-        end,
-        mode = { "i", "s" },
-        desc = "Change choice forward",
-      },
-      {
-        "<M-H>",
-        function()
-          require("luasnip").change_choice(-1)
-        end,
-        mode = { "i", "s" },
-        desc = "Change choice backward",
-      },
-    },
-  },
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      {
-        "hrsh7th/cmp-nvim-lsp",
-        config = function(_, _)
-          local capabilities = vim.lsp.protocol.make_client_capabilities()
-          capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+      completion = {
+        menu = {
+          border = "rounded",
+          draw = {
+            columns = { { "kind_icon" }, { "label", gap = 1 }, { "source_symbol" }, { "label_description" } },
+            components = {
+              source_symbol = {
+                width = { max = 30 },
+                text = function(ctx)
+                  local icons = require("xrayya.icons")
+                  local mapping = {
+                    buffer = icons.ui.Buffer,
+                    path = icons.ui.Path,
+                    lsp = icons.ui.LSP,
+                    cmdline = icons.ui.Terminal,
+                    snippets = icons.ui.Scissor,
+                  }
 
-          vim.lsp.config("*", { capabilities })
-        end,
-      },
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
-      "windwp/nvim-autopairs",
-      {
-        "L3MON4D3/cmp-luasnip-choice",
-        config = function()
-          require("cmp_luasnip_choice").setup({
-            auto_open = true,
-          })
-        end,
-      },
-      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
-      "micangl/cmp-vimtex",
-      "folke/lazydev.nvim",
-    },
-    init = function()
-      vim.g.completeopt = "menu,menuone,noselect,popup"
-    end,
-    opts = function()
-      local cmp = require("cmp")
-      local compare = require("cmp.config.compare")
-      local icons = require("xrayya.icons")
+                  local symbol = string.format("%s ", mapping[ctx.source_id] or ctx.source_id)
 
-      vim.api.nvim_set_hl(0, "CmpItemKindTabNine", { fg = "#bb5df3" })
+                  if ctx.source_id == "lsp" and ctx.item.client_name then
+                    symbol = string.format("%s [%s]", symbol, ctx.item.client_name)
+                  end
 
-      ---@type cmp.ConfigSchema
-      return {
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
-        },
-        formatting = {
-          fields = { "kind", "abbr", "menu" },
-          format = function(entry, vim_item)
-            vim_item.kind = icons.kind[vim_item.kind]
-
-            if entry.source.name == "cmp_tabnine" then
-              vim_item.kind = icons.misc.Tabnine
-              vim_item.kind_hl_group = "CmpItemKindTabNine"
-            end
-
-            vim_item.menu = ({
-              buffer = icons.ui.Buffer,
-              path = icons.ui.Path,
-              nvim_lsp = icons.ui.LSP,
-              luasnip = icons.misc.Luasnip,
-              cmp_tabnine = icons.ui.HighPriority,
-              cmdline = icons.ui.Terminal,
-              vimtex = icons.ui.Latex,
-              ["vim-dadbod-completion"] = icons.ui.Database,
-            })[entry.source.name]
-
-            if entry.source.name == "nvim_lsp" and entry.source.source.client._log_prefix then
-              vim_item.menu = vim_item.menu
-                  .. " "
-                  .. string.format("[%s]", entry.source.source.client._log_prefix:match("LSP%[(.-)%]"))
-            end
-
-            local labelDetails = (entry.completion_item.labelDetails or {})
-
-            if entry.source.name == "vim-dadbod-completion" then
-              labelDetails.description = ""
-            end
-
-            vim_item.menu = string.format(
-              "%s %s %s",
-              (vim_item.menu or ""),
-              (labelDetails.detail or ""),
-              (labelDetails.description or "")
-            )
-
-            return vim_item
-          end,
-        },
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        },
-        ---@diagnostic disable-next-line: missing-fields
-        sorting = {
-          comparators = {
-            compare.offset,
-            compare.exact,
-            compare.score,
-            compare.recently_used,
-            compare.kind,
-            compare.sort_text,
-            compare.length,
-            compare.order,
+                  return symbol
+                end,
+                highlight = "BlinkCmpSource",
+              },
+            },
           },
         },
-        mapping = cmp.mapping.preset.insert({
-          ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-          ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = function(fallback)
-            if not cmp.visible() or not cmp.get_selected_entry() then
-              fallback()
-            else
-              cmp.confirm({
-                behavior = cmp.ConfirmBehavior.Replace,
-                select = false,
-              })
-            end
-          end,
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-        }),
-        sources = cmp.config.sources({
-          {
-            name = "lazydev",
-            group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+        documentation = {
+          auto_show = true,
+          window = { border = "rounded" },
+        },
+      },
+      signature = { window = { border = "rounded" } },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+        per_filetype = {
+          lua = {
+            inherit_defaults = true,
+            "lazydev",
           },
-          { name = "nvim_lsp" },
-          { name = "vimtex" },
-          { name = "cmp_tabnine" },
-          { name = "luasnip" },
-        }, {
-          { name = "buffer" },
-          { name = "path" },
-        }),
-      }
-    end,
+        },
+        providers = {
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            score_offset = 100,
+          },
+          lsp = {
+            fallbacks = {},
+          },
+        },
+      },
+      fuzzy = {
+        sorts = {
+          "exact",
+          "score",
+          "sort_text",
+        },
+      },
+      appearance = {
+        kind_icons = require("xrayya.icons").kind,
+      },
+    },
+    opts_extend = { "sources.default" },
     config = function(_, opts)
-      local cmp = require("cmp")
-      cmp.setup(opts)
+      require("blink-cmp").setup(opts)
 
-      cmp.setup.cmdline({ "/", "?" }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = "buffer" },
-        },
-      })
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-      cmp.setup.cmdline(":", {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = "path" },
-        }, {
-          { name = "cmdline" },
-        }),
-      })
-
-      cmp.setup.filetype({ "sql" }, {
-        sources = {
-          { name = "vim-dadbod-completion" },
-          { name = "buffer" },
-        },
-      })
-
-      local is_ok, autopairs_integration = pcall(require, "nvim-autopairs.completion.cmp")
-      if is_ok then
-        cmp.event:on("confirm_done", autopairs_integration.on_confirm_done({ map_char = { tex = "" } }))
-      end
+      vim.lsp.config("*", { capabilities })
     end,
   },
 }

@@ -119,7 +119,8 @@ local M = {
     SearchDown        = " ",
     SearchUp          = " ",
     Help              = " ",
-    Input             = "󰥻 "
+    Input             = "󰥻 ",
+    Scissor           = "󰩫 ",
   },
   -- stylua: ignore
   diagnostics = {
