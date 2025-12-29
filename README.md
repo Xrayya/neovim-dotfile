@@ -16,9 +16,11 @@ My personal Neovim configuration — built with **modularity**, **lightweight de
 
    ```
 
-2. Open Neovim and let it automatically install all required dependencies.
+2. Open Neovim and let it automatically install all required dependencies and also create `lua/extra-cofig/init.lua` file
 
 3. You might want to update the all the plugins with `:Lazy sync` since I keep `lazy-lock.json` tracked and might out of date. You might also want to remove the lockfile altogether, it's your choice. I keep the `lazy-lock.json` because I need it.
+
+4. Enable predefined plugins by importing the appropriate files into `lua/extra-config/init.lua`
 
 That’s it.
 
@@ -33,6 +35,8 @@ This repository also provides a collection of predefined **essential plugins** a
 
 For your own customization, `extra-config/init.lua` is the intended entry point.
 Use it to define personal tweaks or load additional configurations that are not included by default.
+This file is gitignore'd by default since the philosophy is to make this whole Neovim configuration modular, plug and play,
+and can be ajdusted for multiple purposes in pultiple environment. Well, at least I always keep that mindset in mind when I develop this repository.
 
 You can explore existing modules under:
 
@@ -147,6 +151,48 @@ Some choices may reflect my personal preferences and might not align with everyo
 
 It’s open source.
 Tweak it, bend it, or completely reshape it into something that feels right for you.
+
+For reference, here is my current `lua/extra-config/init.lua`:
+
+```lua
+---@module "lazy"
+---@type LazySpec
+return {
+  { import = "xrayya.essentials" },
+  { import = "xrayya.essentials.treesitter" },
+  { import = "xrayya.extras.ui.alpha" },
+  { import = "xrayya.extras.ui.smear-cursor" },
+  { import = "xrayya.extras.aerial" },
+  { import = "xrayya.extras.colorizer" },
+  { import = "xrayya.extras.todo-comment" },
+  { import = "xrayya.extras.external" },
+  { import = "xrayya.extras.lazygit" },
+  { import = "xrayya.extras.tmux" },
+  { import = "xrayya.extras.ui.undo-glow" },
+  { import = "xrayya.extras.markdown-preview" },
+
+  { import = "xrayya.extras.langs.lua" },
+  { import = "xrayya.extras.langs.html-css" },
+  { import = "xrayya.extras.langs.tailwindcss" },
+  { import = "xrayya.extras.langs.js-ts-typescript-tools" },
+  { import = "xrayya.extras.langs.json" },
+  { import = "xrayya.extras.langs.yaml" },
+  { import = "xrayya.extras.langs.c-cpp" },
+  { import = "xrayya.extras.langs.java-java" },
+  { import = "xrayya.extras.langs.python" },
+  { import = "xrayya.extras.langs.xml" },
+  { import = "xrayya.extras.langs.git" },
+  { import = "xrayya.extras.langs.bash" },
+  { import = "xrayya.extras.langs.ini" },
+  { import = "xrayya.extras.langs.kitty" },
+  { import = "xrayya.extras.langs.udev" },
+
+  { import = "xrayya.extras.formatter.stylua" },
+  { import = "xrayya.extras.formatter.prettier" },
+
+  {import = "xrayya.extras.debugger.js-chrome-msedge"}
+}
+```
 
 ---
 
