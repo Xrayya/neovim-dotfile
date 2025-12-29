@@ -6,7 +6,7 @@ if not vim.uv.fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out,                            "WarningMsg" },
+      { out, "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
     vim.fn.getchar()
@@ -22,7 +22,7 @@ if not vim.uv.fs_stat(extra_config_path) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone create `extra-config` folder:\n", "ErrorMsg" },
-      { out,                                               "WarningMsg" },
+      { out, "WarningMsg" },
       {
         "You need to create `/lua/extra-config` folder manually",
         "InfoMsg",
@@ -39,7 +39,7 @@ if not vim.uv.fs_stat(extra_config_path .. "/init.lua") then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone create `/lua/extra-config/init.lua`:\n", "ErrorMsg" },
-      { out,                                                      "WarningMsg" },
+      { out, "WarningMsg" },
       {
         "You need to create `/lua/extra-config/init.lua` file manually",
         "InfoMsg",
@@ -90,6 +90,9 @@ require("lazy").setup({
           highlights.LineNr.fg = highlights.LspInlayHint.fg
           highlights.LineNrAbove.fg = highlights.LspInlayHint.fg
           highlights.LineNrBelow.fg = highlights.LspInlayHint.fg
+
+          vim.api.nvim_set_hl(0, "BlinkCmpLabelDescription", { link = "NonText" })
+          vim.api.nvim_set_hl(0, "BlinkCmpSource", { link = "NonText" })
         end,
       },
     },
