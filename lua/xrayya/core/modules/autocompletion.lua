@@ -45,6 +45,7 @@ return {
                     lsp = icons.ui.LSP,
                     cmdline = icons.ui.Terminal,
                     snippets = icons.ui.Scissor,
+                    lazydev = icons.misc.LazyDev,
                   }
 
                   local symbol = string.format("%s ", mapping[ctx.source_id] or ctx.source_id)

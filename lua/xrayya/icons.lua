@@ -146,6 +146,7 @@ local M = {
     Squirrel = "",
     Tag      = "",
     Watch    = "",
+    LazyDev  = "󰒲 "
   },
 }
 
