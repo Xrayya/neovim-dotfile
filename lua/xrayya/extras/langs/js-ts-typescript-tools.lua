@@ -53,13 +53,16 @@ return {
     },
     config = function()
       require("typescript-tools").setup({
-        init_options = {
-          preferences = {
-            importModuleSpecifierPreference = "shortest",
+        config = {
+          init_options = {
+            preferences = {
+              importModuleSpecifierPreference = "shortest",
+            },
           },
         },
         settings = {
           code_lens = "all",
+          tsserver_max_memory = 3072,
           publish_diagnostic_on = "change",
           expose_as_code_action = "all",
           tsserver_file_preferences = {
