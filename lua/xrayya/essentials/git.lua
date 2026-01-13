@@ -74,7 +74,7 @@ return {
             if vim.wo.diff then
               vim.cmd.normal({ "]c", bang = true })
             else
-              ---@diagnostic disable-next-line: param-type-mismatch
+              ---@diagnostic disable-next-line: missing-fields
               gitsigns.nav_hunk("next", { preview = true, target = "all" })
             end
           end, { desc = "Move to next hunk" })
@@ -83,8 +83,8 @@ return {
             if vim.wo.diff then
               vim.cmd.normal({ "[c", bang = true })
             else
-              ---@diagnostic disable-next-line: param-type-mismatch
-              gitsigns.nav_hunk("	rev", { preview = true, target = "all" })
+              ---@diagnostic disable-next-line: missing-fields
+              gitsigns.nav_hunk("prev", { preview = true, target = "all" })
             end
           end, { desc = "Move to previous hunk" })
 
