@@ -16,11 +16,15 @@ return {
 
       require("nvim-treesitter").install(opts.ensure_installed or {})
 
+      local buf_utils = require("xrayya.utils.buf")
+
       if not vim.tbl_isempty(opts.ensure_highlight or {}) then
         vim.api.nvim_create_autocmd("FileType", {
           pattern = opts.ensure_highlight,
-          callback = function(_)
-            vim.treesitter.start()
+          callback = function(args)
+            if not buf_utils.is_large_buf(args.buf) then
+              vim.treesitter.start()
+            end
           end,
         })
       end
@@ -28,9 +32,11 @@ return {
       if not vim.tbl_isempty(opts.ensure_fold or {}) then
         vim.api.nvim_create_autocmd("FileType", {
           pattern = opts.ensure_fold,
-          callback = function(_)
-            vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-            vim.wo[0][0].foldmethod = "expr"
+          callback = function(args)
+            if not buf_utils.is_large_buf(args.buf) then
+              vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+              vim.wo[0][0].foldmethod = "expr"
+            end
           end,
         })
       end
@@ -38,8 +44,10 @@ return {
       if not vim.tbl_isempty(opts.ensure_indent or {}) then
         vim.api.nvim_create_autocmd("FileType", {
           pattern = opts.ensure_indent,
-          callback = function(_)
-            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          callback = function(args)
+            if not buf_utils.is_large_buf(args.buf) then
+              vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            end
           end,
         })
       end
