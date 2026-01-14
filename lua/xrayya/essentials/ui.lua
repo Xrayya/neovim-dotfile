@@ -121,8 +121,8 @@ return {
         end
         return {
           ft_icon
-          and { " ", ft_icon, " ", guibg = ft_color, guifg = require("incline.helpers").contrast_color(ft_color) }
-          or "",
+              and { " ", ft_icon, " ", guibg = ft_color, guifg = require("incline.helpers").contrast_color(ft_color) }
+            or "",
           " ",
           { filename, gui = modified and "bold,italic" or "bold" },
           " ",

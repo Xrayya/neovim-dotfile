@@ -21,12 +21,12 @@ return {
     })
 
     whichkey.add({
-      { "gr",        group = "LSP",                    icon = icons.ui.LSP },
-      { "gra",       desc = "Code action" },
-      { "grI",       desc = "Go to implementation(s)" },
-      { "grn",       desc = "Rename" },
-      { "grr",       desc = "Go to reference(s)" },
-      { "grt",       desc = "Go to type definition(s)" },
+      { "gr", group = "LSP", icon = icons.ui.LSP },
+      { "gra", desc = "Code action" },
+      { "grI", desc = "Go to implementation(s)" },
+      { "grn", desc = "Rename" },
+      { "grr", desc = "Go to reference(s)" },
+      { "grt", desc = "Go to type definition(s)" },
       { "<Leader>f", group = "Find" },
       { "<Leader>g", group = "Git" },
     })
