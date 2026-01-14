@@ -7,6 +7,26 @@ My personal Neovim configuration — built with **modularity**, **lightweight de
 
 ---
 
+## 🧰 Prerequisites 
+
+First of all, this repo built and tested using the latest Neovim stable release and primarily on Linux. If you use the older version of Neovim and/or not using Linux, you might need to do your own adjustment.
+
+Some plugins used in this config have specific external dependencies.
+
+For example:
+- [nvim-telescope](https://github.com/nvim-telescope/telescope.nvim) expects [ripgrep](https://github.com/BurntSushi/ripgrep) and [fd](https://github.com/sharkdp/fd) to be available in your system  (see the official notes [here](https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#optional-dependencies)).
+- [telescope-all-recent](https://github.com/prochri/telescope-all-recent.nvim) requires `libsqlite3` to be accessible from your `PATH` (see the requirements [here](https://github.com/prochri/telescope-all-recent.nvim?tab=readme-ov-file#requirements)).
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) requires `tree-sitter-cli` **and** a working C compiler (see details [here](https://github.com/nvim-treesitter/nvim-treesitter#requirements)).
+- Some situation might require you to have Node.js or other JavaScript runtime installed, e.g. using [nvim-dap](https://github.com/mfussenegger/nvim-dap) with [vscode-js-debug](https://github.com/microsoft/vscode-js-debug). You need to check the official documentations.
+
+### Notes for Windows users
+
+If you enable the `/essentials/treesitter` module and run into C compiler issues on Windows, you **do not need to install Visual Studio**.
+
+A lighter and simpler alternative is to install **MinGW**  (for example via [Scoop](https://scoop.sh/)), then set the `CC` environment variable to point to your compiler executable (like `cc.exe` or `gcc.exe`). `tree-sitter-cli` will automatically use the compiler defined in the `CC` environment variable if it is present.
+
+---
+
 ## 🚀 Installation
 
 1. Clone this repository into your [`$XDG_CONFIG_HOME`](https://neovim.io/doc/user/starting.html#%24XDG_CONFIG_HOME), for example on Linux:
@@ -158,6 +178,13 @@ For reference, here is my current `lua/extra-config/init.lua`:
 ---@module "lazy"
 ---@type LazySpec
 return {
+  {
+    -- only set this if you're on windows
+    "prochri/telescope-all-recent.nvim",
+    init = function()
+      vim.g.sqlite_clib_path = vim.fn.stdpath("data") .. "/sqlitelib/sqlite3.dll" -- or any path to sqlite3.dll
+    end
+  },
   { import = "xrayya.essentials" },
   { import = "xrayya.essentials.treesitter" },
   { import = "xrayya.extras.ui.alpha" },
