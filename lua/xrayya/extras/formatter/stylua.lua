@@ -2,11 +2,19 @@
 ---@type LazySpec
 return {
   {
-    "nvimtools/none-ls.nvim",
+    "mason-org/mason-lspconfig.nvim",
     opts = function(_, opts)
-      local nls = require("null-ls")
-      opts.sources = opts.sources or {}
-      table.insert(opts.sources, nls.builtins.formatting.stylua)
+      opts.ensure_installed = opts.ensure_installed or {}
+
+      opts.ensure_installed = require("xrayya.utils.lsp").check_ensure_installed({ "stylua" }, opts.ensure_installed)
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    ---@param opts Xray.lspconfigOpts
+    opts = function(_, opts)
+      opts.servers = opts.servers or {}
+      opts.servers["stylua"] = {}
     end,
   },
 }
