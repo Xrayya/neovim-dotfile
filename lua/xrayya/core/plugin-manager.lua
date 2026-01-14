@@ -18,7 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 -- bootstrap extra-config
 local extra_config_path = vim.fn.stdpath("config") .. "/lua/extra-config"
 if not vim.uv.fs_stat(extra_config_path) then
-  local out = vim.system({ "mkdir", "-p", extra_config_path })
+  local out = vim.fn.mkdir(extra_config_path, "p")
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone create `extra-config` folder:\n", "ErrorMsg" },
@@ -35,25 +35,6 @@ if not vim.uv.fs_stat(extra_config_path) then
 end
 
 if not vim.uv.fs_stat(extra_config_path .. "/init.lua") then
-  local out = vim.system({ "touch", extra_config_path .. "/init.lua" })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone create `/lua/extra-config/init.lua`:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      {
-        "You need to create `/lua/extra-config/init.lua` file manually",
-        "InfoMsg",
-      },
-      {
-        "See `/lua/core/plugin-manager.lua` for the detail configuration",
-        "InfoMsg",
-      },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
-
   local content = string.format(
     "%s\n\n%s\n%s\n%s\n%s\n%s\n%s",
     "-- Other configuration that you need",
