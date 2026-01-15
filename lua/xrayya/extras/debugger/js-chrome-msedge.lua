@@ -29,7 +29,7 @@ return {
           host = "localhost",
           port = "${port}",
           executable = {
-            command = vim.fn.executable("bun") == 1 and "bun" or "node",
+            command = "node",
             args = {
               vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
               "${port}",
