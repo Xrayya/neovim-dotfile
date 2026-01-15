@@ -135,6 +135,11 @@ return {
 
       telescope.load_extension("fzf")
       telescope.load_extension("ui-select")
+
+      local is_ok, whichkey = pcall(require, "which-key")
+      if is_ok then
+        whichkey.add({ "<Leader>f", group = "Find" })
+      end
     end,
     cmd = {
       "Telescope",

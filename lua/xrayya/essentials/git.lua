@@ -96,5 +96,13 @@ return {
 
       return opts
     end,
+    config = function(_, opts)
+      require("gitsigns").setup(opts)
+
+      local is_ok, whichkey = pcall(require, "which-key")
+      if is_ok then
+        whichkey.add({ "<Leader>g", group = "Git" })
+      end
+    end,
   },
 }
