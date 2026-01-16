@@ -9,6 +9,19 @@ return {
       dap.adapters = opts.adapters or {}
       dap.configurations = opts.configurations or {}
 
+      if vim.fn.has("unix") and vim.fn.executable("kitty") == 1 then
+        dap.defaults.fallback.external_terminal = {
+          command = "/usr/bin/kitty",
+          args = { "-e" },
+        }
+      elseif vim.fn.has("win32") then
+        -- WARNING: not tested yet
+        dap.defaults.fallback.external_terminal = {
+          command = "wt.exe",
+          args = { "powershell", "-NoExit" },
+        }
+      end
+
       local is_ok, overseer = pcall(require, "overseer")
       if is_ok then
         overseer.enable_dap()
