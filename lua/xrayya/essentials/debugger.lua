@@ -37,135 +37,53 @@ return {
       set_dap_sign("DapLogPoint", debugger_icons.BreakPointLog, "DiagnosticSignError")
       set_dap_sign("DapStopped", debugger_icons.BreakPointActive, "DiagnosticSignWarn")
 
-      local is_ok, overseer = pcall(require, "overseer")
-      if is_ok then
+      ---@param lhs string
+      ---@param rhs string|fun()
+      ---@param desc string
+      local function map(lhs, rhs, desc)
+        vim.keymap.set("n", lhs, rhs, { desc = desc })
+      end
+
+      local function set_conditional_breakpoint()
+        local bp_condition = vim.fn.input("Breakpoint condition: ")
+        local bp_hit_condition = vim.fn.input("Breakpoint hit condition: ")
+        local bp_log_message = vim.fn.input("Log message: ")
+        dap.set_breakpoint(
+          bp_condition ~= "" and bp_condition or nil,
+          bp_hit_condition ~= "" and bp_hit_condition or nil,
+          bp_log_message ~= "" and bp_log_message or nil
+        )
+      end
+
+      map("<F5>", dap.continue, "Start debugger")
+      map("<S-F5>", dap.terminate, "Stop debug session")
+      map("<F17>", dap.terminate, "Stop debug session") -- Shift-F5 in some terminals
+      map("<F10>", dap.step_over, "Step over")
+      map("<F11>", dap.step_into, "Step into")
+      map("<S-F11>", dap.step_out, "Step out")
+      map("<F23>", dap.step_out, "Step out") -- Shift-F11 in some terminals
+      map("<F9>", dap.toggle_breakpoint, "Toggle breakpoint")
+      map("<S-F9>", set_conditional_breakpoint, "Set conditional breakpoint")
+      map("<F21>", set_conditional_breakpoint, "Set conditional breakpoint") -- Shift-F9 in some terminals
+
+      map("<Leader>dc", dap.continue, "Start debugger")
+      map("<Leader>dt", dap.terminate, "Stop debug session")
+      map("<Leader>dO", dap.step_over, "Step over")
+      map("<Leader>di", dap.step_into, "Step into")
+      map("<Leader>do", dap.step_out, "Step out")
+      map("<Leader>db", dap.toggle_breakpoint, "Toggle breakpoint")
+      map("<Leader>dB", set_conditional_breakpoint, "Set conditional breakpoint")
+
+      local is_ok_wk, whichkey = pcall(require, "which-key")
+      if is_ok_wk then
+        whichkey.add({ "<Leader>d", group = "Debugger" })
+      end
+
+      local is_ok_ov, overseer = pcall(require, "overseer")
+      if is_ok_ov then
         overseer.enable_dap()
       end
     end,
-    keys = {
-      {
-        "<F5>",
-        function()
-          require("dap").continue()
-        end,
-        mode = { "n" },
-        desc = "Start debugger",
-      },
-      {
-        "<S-F5>",
-        function()
-          require("dap").terminate()
-        end,
-        mode = { "n" },
-        desc = "Stop debug session",
-      },
-      {
-        "<F17>", -- in case terminal process it this way
-        function()
-          require("dap").terminate()
-        end,
-        mode = { "n" },
-        desc = "Stop debug session",
-      },
-      {
-        "<F10>",
-        function()
-          require("dap").step_over()
-        end,
-        mode = { "n" },
-        desc = "Step over",
-      },
-      {
-        "<F11>",
-        function()
-          require("dap").step_into()
-        end,
-        mode = { "n" },
-        desc = "Step into",
-      },
-      {
-        "<S-F11>",
-        function()
-          require("dap").step_out()
-        end,
-        mode = { "n" },
-        desc = "Step out",
-      },
-      {
-        "<F23>", -- in case terminal process it this way
-        function()
-          require("dap").step_out()
-        end,
-        mode = { "n" },
-        desc = "Step out",
-      },
-      {
-        "<F9>",
-        function()
-          require("dap").toggle_breakpoint()
-        end,
-        mode = { "n" },
-        desc = "Toggle breakpoint",
-      },
-      {
-        "<S-F9>",
-        function()
-          vim.ui.select({ "normal", "condition", "hit condition", "log message" }, {
-            prompt = "Select the type of breakpoint:",
-            format_item = function(item)
-              local format = "Set breakpoint"
-              if item == "normal" then
-                format = format .. " (normal)"
-              else
-                format = format .. " with " .. item
-              end
-              return format
-            end,
-          }, function(item, _)
-            if item == "normal" then
-              require("dap").set_breakpoint()
-            elseif item == "condition" then
-              require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
-            elseif item == "hit condition" then
-              require("dap").set_breakpoint(nil, vim.fn.input("Breakpoint hit condition: "))
-            elseif item == "log message" then
-              require("dap").set_breakpoint(nil, nil, vim.fn.input("Log message: "))
-            end
-          end)
-        end,
-        mode = { "n" },
-        desc = "Set conditional breakpoint",
-      },
-      {
-        "<F21>", -- in case terminal process it this way
-        function()
-          vim.ui.select({ "normal", "condition", "hit condition", "log message" }, {
-            prompt = "Select the type of breakpoint:",
-            format_item = function(item)
-              local format = "Set breakpoint"
-              if item == "normal" then
-                format = format .. " (normal)"
-              else
-                format = format .. " with " .. item
-              end
-              return format
-            end,
-          }, function(item, _)
-            if item == "normal" then
-              require("dap").set_breakpoint()
-            elseif item == "condition" then
-              require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
-            elseif item == "hit condition" then
-              require("dap").set_breakpoint(nil, vim.fn.input("Breakpoint hit condition: "))
-            elseif item == "log message" then
-              require("dap").set_breakpoint(nil, nil, vim.fn.input("Log message: "))
-            end
-          end)
-        end,
-        mode = { "n" },
-        desc = "Set conditional breakpoint",
-      },
-    },
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
