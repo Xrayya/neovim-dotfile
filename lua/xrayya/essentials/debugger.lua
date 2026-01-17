@@ -22,6 +22,21 @@ return {
         }
       end
 
+      local debugger_icons = require("xrayya.icons").debugger
+
+      ---@param name string
+      ---@param icon string
+      ---@param hl string
+      local function set_dap_sign(name, icon, hl)
+        vim.fn.sign_define(name, { text = icon, texthl = hl, linehl = "", numhl = "" })
+      end
+
+      set_dap_sign("DapBreakpoint", debugger_icons.BreakPoint, "DiagnosticSignError")
+      set_dap_sign("DapBreakpointCondition", debugger_icons.BreakPointConditional, "DiagnosticSignError")
+      set_dap_sign("DapBreakpointRejected", debugger_icons.BreakPointRejected, "DiagnosticSignInfo")
+      set_dap_sign("DapLogPoint", debugger_icons.BreakPointLog, "DiagnosticSignError")
+      set_dap_sign("DapStopped", debugger_icons.BreakPointActive, "DiagnosticSignWarn")
+
       local is_ok, overseer = pcall(require, "overseer")
       if is_ok then
         overseer.enable_dap()
