@@ -19,7 +19,7 @@ set.iskeyword:append("-")
 set.mouse = "a"
 set.splitbelow = true
 set.splitright = true
-set.conceallevel = 2
+set.conceallevel = 3
 set.signcolumn = "yes:2"
 set.foldcolumn = "0"
 set.tabstop = 2
