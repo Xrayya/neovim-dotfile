@@ -19,11 +19,11 @@ For example:
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) requires `tree-sitter-cli` **and** a working C compiler (see details [here](https://github.com/nvim-treesitter/nvim-treesitter#requirements)).
 - Some situation might require you to have Node.js or other JavaScript runtime installed, e.g. using [nvim-dap](https://github.com/mfussenegger/nvim-dap) with [vscode-js-debug](https://github.com/microsoft/vscode-js-debug). You need to check the official documentations.
 
-### Notes for Windows users
-
-If you enable the `/essentials/treesitter` module and run into C compiler issues on Windows, you **do not need to install Visual Studio**.
-
-A lighter and simpler alternative is to install **MinGW**  (for example via [Scoop](https://scoop.sh/)), then set the `CC` environment variable to point to your compiler executable (like `cc.exe` or `gcc.exe`). `tree-sitter-cli` will automatically use the compiler defined in the `CC` environment variable if it is present.
+> [!NOTE] 
+> For Windows users, related to `tree-sitter-cli` and C compiler:
+> If you enable the `/essentials/treesitter` module and run into C compiler issues on Windows, you **do not need to install Visual Studio**.
+>
+> A lighter and simpler alternative is to install **MinGW**  (for example via [Scoop](https://scoop.sh/)), then set the `CC` environment variable to point to your compiler executable (like `cc.exe` or `gcc.exe`). `tree-sitter-cli` will automatically use the compiler defined in the `CC` environment variable if it is present.
 
 ---
 
