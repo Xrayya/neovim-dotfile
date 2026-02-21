@@ -5,8 +5,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       opts = require("xrayya.utils.treesitter").extend(opts, {
-        ensure_installed = { "go" },
-        ensure_highlight = { "go" },
+        ensure_installed = { "go", "gomod", "gosum" },
+        ensure_highlight = { "go", "gomod", "gosum" },
         ensure_indent = { "go" },
         ensure_fold = { "go" },
       })
@@ -38,7 +38,7 @@ return {
               rangeVariableTypes = true,
             },
           },
-        }
+        },
       }
     end,
   },
