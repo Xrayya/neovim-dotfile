@@ -18,4 +18,5 @@ return {
       end
     end,
   },
+  "nvim-treesitter/nvim-treesitter",
 }
