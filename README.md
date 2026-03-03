@@ -9,7 +9,7 @@ My personal Neovim configuration — built with **modularity**, and a **plug-and
 
 ## 🧰 Prerequisites 
 
-First of all, this repo built and tested using the latest Neovim stable release and primarily on Linux. If you use the older version of Neovim and/or not using Linux, you might need to do your own adjustment.
+First of all, this repo is built and tested using the latest Neovim stable release and primarily on Linux. If you use the older version of Neovim and/or not using Linux, you might need to do your own adjustment.
 
 Some plugins used in this config have specific external dependencies.
 
@@ -56,7 +56,7 @@ This repository also provides a collection of predefined **essential plugins** a
 For your own customization, `extra-config/init.lua` is the intended entry point.
 Use it to define personal tweaks or load additional configurations that are not included by default.
 This file is gitignore'd by default since the philosophy is to make this whole Neovim configuration modular, plug and play,
-and can be ajdusted for multiple purposes in pultiple environment. Well, at least I always keep that mindset in mind when I develop this repository.
+and can be ajdusted for multiple purposes in multiple environment. Well, at least I always keep that mindset in mind when I develop this repository.
 
 You can explore existing modules under:
 
