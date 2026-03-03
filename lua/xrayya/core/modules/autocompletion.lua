@@ -26,6 +26,11 @@ return {
         },
       },
       completion = {
+        list = {
+          selection = {
+            preselect = false,
+          },
+        },
         menu = {
           border = "rounded",
           draw = {
