@@ -3,7 +3,7 @@
 ![Lua](https://img.shields.io/badge/Lua-100%25-blue.svg)
 ![Neovim](https://img.shields.io/badge/Neovim-Config-critical.svg)
 
-My personal Neovim configuration — built with **modularity**, **lightweight design**, and a **plug-and-play mindset** in mind.
+My personal Neovim configuration — built with **modularity**, and a **plug-and-play mindset** in mind.
 
 ---
 
