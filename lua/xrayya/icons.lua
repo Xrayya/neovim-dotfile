@@ -82,7 +82,7 @@ local M = {
     Rename    = "",
     Diff      = "",
     Repo      = "",
-    Octoface  = "",
+    Octoface  = "",
   },
   debugger = {
     BreakPoint = "●",
