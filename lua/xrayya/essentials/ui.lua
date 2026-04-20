@@ -80,6 +80,8 @@ return {
   {
     "shellRaining/hlchunk.nvim",
     -- enabled = false,
+    ---@module "hlchunk"
+    ---@type HlChunk.UserConf
     opts = {
       chunk = {
         enable = true,
