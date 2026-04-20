@@ -4,7 +4,6 @@ return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown", "quarto", "codecompanion" },
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.icons" },
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {
@@ -16,6 +15,7 @@ return {
       render_modes = true,
     },
   },
+  "nvim-mini/mini.icons",
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
