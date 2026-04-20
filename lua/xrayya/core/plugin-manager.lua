@@ -22,7 +22,7 @@ if not vim.uv.fs_stat(extra_config_path) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone create `extra-config` folder:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
+      { tostring(out), "WarningMsg" },
       {
         "You need to create `/lua/extra-config` folder manually",
         "InfoMsg",
