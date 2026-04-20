@@ -14,7 +14,7 @@ return {
           command = "/usr/bin/kitty",
           args = { "-e" },
         }
-      elseif vim.fn.has("win32") then
+      elseif vim.fn.has("win32") == 1 then
         -- WARNING: not tested yet
         dap.defaults.fallback.external_terminal = {
           command = "wt.exe",
@@ -89,7 +89,6 @@ return {
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = {
       "mason-org/mason.nvim",
-      opts = {},
     },
     ---@module "mason-nvim-dap"
     ---@type MasonNvimDapSettings
