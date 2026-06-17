@@ -98,4 +98,14 @@ return {
       }
     end,
   },
+  {
+    {
+      "ray-d-song/inlay-hint-trim.nvim",
+      opts = {
+        clients = {
+          ["tsgo"] = true,
+        },
+      },
+    },
+  },
 }
