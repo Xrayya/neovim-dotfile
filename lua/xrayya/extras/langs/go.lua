@@ -3,14 +3,11 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      opts = require("xrayya.utils.treesitter").extend(opts, {
-        ensure_installed = { "go", "gomod", "gosum" },
-        ensure_highlight = { "go", "gomod", "gosum" },
-        ensure_indent = { "go" },
-        ensure_fold = { "go" },
-      })
-    end,
+    ---@module "xrayya.essentials.treesitter.treesitter"
+    ---@type Xray.treesitterOpts
+    opts = {
+      ensure_install_parser = { "go", "gomod", "gosum" },
+    },
   },
   {
     "mason-org/mason-lspconfig.nvim",

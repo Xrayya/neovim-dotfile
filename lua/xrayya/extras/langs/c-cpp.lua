@@ -54,14 +54,11 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      opts = require("xrayya.utils.treesitter").extend(opts, {
-        ensure_installed = { "cpp", "c", "comment" },
-        ensure_highlight = { "cpp", "c", "comment" },
-        ensure_indent = { "cpp", "c" },
-        ensure_fold = { "cpp", "c" },
-      })
-    end,
+    ---@module "xrayya.essentials.treesitter.treesitter"
+    ---@type Xray.treesitterOpts
+    opts = {
+      ensure_install_parser = { "cpp", "c", "comment" },
+    },
   },
   {
     "mason-org/mason-lspconfig.nvim",

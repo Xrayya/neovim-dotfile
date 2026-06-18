@@ -21,14 +21,11 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      opts = require("xrayya.utils.treesitter").extend(opts, {
-        ensure_installed = { "lua", "luadoc", "comment" },
-        ensure_highlight = { "lua", "luadoc", "comment" },
-        ensure_indent = { "lua" },
-        ensure_fold = { "lua" },
-      })
-    end,
+    ---@module "xrayya.essentials.treesitter.treesitter"
+    ---@type Xray.treesitterOpts
+    opts = {
+      ensure_install_parser = { "lua", "luadoc", "comment" },
+    },
   },
   {
     "mason-org/mason-lspconfig.nvim",

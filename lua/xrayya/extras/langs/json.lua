@@ -26,14 +26,11 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      opts = require("xrayya.utils.treesitter").extend(opts, {
-        ensure_installed = { "json", "json5", "comment" },
-        ensure_highlight = { "json", "json5", "comment" },
-        ensure_indent = { "json" },
-        ensure_fold = { "json" },
-      })
-    end,
+    ---@module "xrayya.essentials.treesitter.treesitter"
+    ---@type Xray.treesitterOpts
+    opts = {
+      ensure_install_parser = { "json", "json5", "comment" },
+    },
   },
   {
     "mason-org/mason-lspconfig.nvim",

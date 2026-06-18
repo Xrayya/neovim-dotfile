@@ -9,12 +9,11 @@ return {
       "rcarriga/nvim-notify",
       {
         "nvim-treesitter/nvim-treesitter",
-        opts = function(_, opts)
-          opts = require("xrayya.utils.treesitter").extend(opts, {
-            ensure_installed = { "regex" },
-            ensure_highlight = { "regex" },
-          })
-        end,
+        ---@module "xrayya.essentials.treesitter.treesitter"
+        ---@type Xray.treesitterOpts
+        opts = {
+          ensure_install_parser = { "regex" },
+        },
       },
     },
     ---@type NoiceConfig

@@ -24,14 +24,11 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      opts = require("xrayya.utils.treesitter").extend(opts, {
-        ensure_installed = { "javascript", "jsx", "jsdoc", "typescript", "tsx", "comment" },
-        ensure_highlight = { "javascript", "jsx", "jsdoc", "typescript", "tsx", "comment" },
-        ensure_indent = { "javascript", "typescript", "tsx" },
-        ensure_fold = { "javascript", "typescript", "tsx" },
-      })
-    end,
+    ---@module "xrayya.essentials.treesitter.treesitter"
+    ---@type Xray.treesitterOpts
+    opts = {
+      ensure_install_parser = { "javascript", "jsx", "jsdoc", "typescript", "tsx", "comment" },
+    },
   },
   {
     "mason-org/mason-lspconfig.nvim",

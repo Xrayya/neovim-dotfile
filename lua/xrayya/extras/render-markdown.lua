@@ -18,13 +18,10 @@ return {
   "nvim-mini/mini.icons",
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      opts = require("xrayya.utils.treesitter").extend(opts, {
-        ensure_installed = { "markdown", "markdown_inline", "html", "latex", "yaml" },
-        ensure_highlight = { "markdown", "markdown_inline", "html", "latex", "yaml" },
-        ensure_indent = { "markdown", "html", "yaml" },
-        ensure_fold = { "markdown", "html", "latex", "yaml" },
-      })
-    end,
+    ---@module "xrayya.essentials.treesitter.treesitter"
+    ---@type Xray.treesitterOpts
+    opts = {
+      ensure_install_parser = { "markdown", "markdown_inline", "html", "latex", "yaml" },
+    },
   },
 }

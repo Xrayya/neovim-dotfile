@@ -3,13 +3,11 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      opts = require("xrayya.utils.treesitter").extend(opts, {
-        ensure_installed = { "qmljs" },
-        ensure_highlight = { "qmljs" },
-        ensure_fold = { "qmljs" },
-      })
-    end,
+    ---@module "xrayya.essentials.treesitter.treesitter"
+    ---@type Xray.treesitterOpts
+    opts = {
+      ensure_install_parser = { "qmljs", "comment" },
+    },
   },
   {
     "mason-org/mason-lspconfig.nvim",

@@ -3,14 +3,11 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      opts = require("xrayya.utils.treesitter").extend(opts, {
-        ensure_installed = { "javascript", "jsx", "jsdoc", "typescript", "tsx", "comment" },
-        ensure_highlight = { "typescript", "html", "typescriptreact", "htmlangular" },
-        ensure_indent = { "typescript", "html", "typescriptreact", "htmlangular" },
-        ensure_fold = { "typescript", "html", "typescriptreact", "htmlangular" },
-      })
-    end,
+    ---@module "xrayya.essentials.treesitter.treesitter"
+    ---@type Xray.treesitterOpts
+    opts = {
+      ensure_install_parser = { "angular" },
+    },
   },
   {
     "mason-org/mason-lspconfig.nvim",

@@ -21,14 +21,11 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      opts = require("xrayya.utils.treesitter").extend(opts, {
-        ensure_installed = { "java", "javadoc", "comment" },
-        ensure_highlight = { "java", "javadoc", "comment" },
-        ensure_indent = { "java", "javadoc" },
-        ensure_fold = { "java" },
-      })
-    end,
+    ---@module "xrayya.essentials.treesitter.treesitter"
+    ---@type Xray.treesitterOpts
+    opts = {
+      ensure_install_parser = { "java", "javadoc", "comment" },
+    },
   },
   {
     "nvim-java/nvim-java",
