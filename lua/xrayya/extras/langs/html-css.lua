@@ -25,6 +25,7 @@ return {
         filetypes = { "html", "htmlangular" },
       }
       opts.servers["cssls"] = {}
+      opts.servers["emmet_ls"] = {}
     end,
   },
 }
