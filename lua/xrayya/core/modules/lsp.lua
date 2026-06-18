@@ -7,16 +7,20 @@ return {
   {
     "mason-org/mason-lspconfig.nvim",
     dependencies = { "mason-org/mason.nvim" },
-    opts = {},
+    ---@module "mason-lspconfig"
+    ---@type MasonLspconfigSettings
+    opts = {
+      automatic_enable = false,
+    },
+    ---@param opts MasonLspconfigSettings
     config = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
+
+      require("xrayya.utils.lsp").check_ensure_installed(opts.ensure_installed, opts.ensure_installed)
+
       require("mason-lspconfig").setup(opts)
-
-      local installed_servers = require("mason-lspconfig").get_installed_servers()
-
-      for _, server in pairs(installed_servers) do
-        vim.lsp.enable(server)
-      end
     end,
+    opts_extend = { "ensure_installed" },
   },
   {
     "neovim/nvim-lspconfig",
@@ -54,5 +58,6 @@ return {
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       },
     },
+    opts_extend = { "library" },
   },
 }
