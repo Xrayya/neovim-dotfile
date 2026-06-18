@@ -42,6 +42,7 @@ return {
         },
       },
     },
+    opts_extend = { "routes" },
     keys = {
       {
         "<c-f>",
