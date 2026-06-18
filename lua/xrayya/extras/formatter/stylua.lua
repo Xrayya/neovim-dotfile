@@ -3,11 +3,9 @@
 return {
   {
     "mason-org/mason-lspconfig.nvim",
-    opts = function(_, opts)
-      opts.ensure_installed = opts.ensure_installed or {}
-
-      opts.ensure_installed = require("xrayya.utils.lsp").check_ensure_installed({ "stylua" }, opts.ensure_installed)
-    end,
+    ---@module "mason-lspconfig"
+    ---@type MasonLspconfigSettings
+    opts = { "stylua" },
   },
   {
     "neovim/nvim-lspconfig",
