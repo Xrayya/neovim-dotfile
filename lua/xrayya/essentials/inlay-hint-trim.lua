@@ -2,7 +2,7 @@
 ---@type LazySpec
 return {
   "ray-d-song/inlay-hint-trim.nvim",
-  config = function(opts)
+  config = function(_, opts)
     require("inlay-hint-trim").setup(opts)
   end,
   opts_extend = { "clients" },
