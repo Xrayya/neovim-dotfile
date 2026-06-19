@@ -34,7 +34,6 @@ M.check_ensure_installed = function(servers, custom_mappings)
     ::continue::
   end
 
-  print(vim.inspect(ensure_installed))
   return ensure_installed
 end
 
