@@ -5,7 +5,7 @@ return {
     "mason-org/mason-lspconfig.nvim",
     ---@module "mason-lspconfig"
     ---@type MasonLspconfigSettings
-    opts = { "stylua" },
+    opts = { ensure_installed = { "stylua" } },
   },
   {
     "neovim/nvim-lspconfig",

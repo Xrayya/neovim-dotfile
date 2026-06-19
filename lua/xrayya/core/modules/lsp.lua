@@ -6,7 +6,7 @@
 return {
   {
     "mason-org/mason-lspconfig.nvim",
-    dependencies = { "mason-org/mason.nvim" },
+    dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" },
     ---@module "mason-lspconfig"
     ---@type MasonLspconfigSettings
     opts = {
@@ -16,7 +16,7 @@ return {
     config = function(_, opts)
       opts.ensure_installed = opts.ensure_installed or {}
 
-      require("xrayya.utils.lsp").check_ensure_installed(opts.ensure_installed, opts.ensure_installed)
+      opts.ensure_installed = require("xrayya.utils.lsp").check_ensure_installed(opts.ensure_installed)
 
       require("mason-lspconfig").setup(opts)
     end,
