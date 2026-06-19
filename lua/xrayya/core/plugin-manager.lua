@@ -57,15 +57,14 @@ require("lazy").setup({
     { import = "xrayya.core.modules" },
     { import = "extra-config" },
     {
-      "folke/tokyonight.nvim",
+      "serhez/teide.nvim",
       lazy = false,
       priority = 1000,
-      ---@module "tokyonight"
-      ---@type tokyonight.Config
+      ---@module "teide"
+      ---@type teide.Config
       ---@diagnostic disable-next-line: missing-fields
       opts = {
-        style = "night",
-        light_style = "day",
+        style = "darker",
         transparent = true,
         on_highlights = function(highlights, _)
           highlights.LineNr.fg = highlights.LspInlayHint.fg
