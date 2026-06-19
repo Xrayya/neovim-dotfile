@@ -2,17 +2,18 @@
 ---@type LazySpec
 return {
   {
-    "b0o/SchemaStore.nvim",
-    lazy = true,
-    version = false,
-  },
-  {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      {
+        "b0o/SchemaStore.nvim",
+        version = false,
+      },
+    },
+    ---@module "xrayya.core.modules.lsp"
     ---@param opts Xray.lspconfigOpts
     opts = function(_, opts)
-      opts.servers = opts.servers or {}
-      ---@type vim.lsp.Config
-      opts.servers["yamlls"] = {
+      opts.enable_servers = opts.enable_servers or {}
+      opts.enable_servers.yamlls = {
         ---@module "lspconfig"
         ---@type lspconfig.settings.yamlls
         settings = {

@@ -1,5 +1,5 @@
 ---@class Xray.lspconfigOpts
----@field servers table<string, vim.lsp.Config>
+---@field enable_servers table<string, vim.lsp.Config>
 
 ---@module "lazy"
 ---@type LazySpec
@@ -12,6 +12,7 @@ return {
     opts = {
       automatic_enable = false,
     },
+    opts_extend = { "ensure_installed" },
     ---@param opts MasonLspconfigSettings
     config = function(_, opts)
       opts.ensure_installed = opts.ensure_installed or {}
@@ -20,13 +21,13 @@ return {
 
       require("mason-lspconfig").setup(opts)
     end,
-    opts_extend = { "ensure_installed" },
   },
   {
     "neovim/nvim-lspconfig",
     ---@param opts Xray.lspconfigOpts
     config = function(_, opts)
-      local servers = opts.servers or {}
+      local servers = opts.enable_servers or {}
+
       for server_name, server_opts in pairs(servers) do
         vim.lsp.config(server_name, server_opts)
         vim.lsp.enable(server_name)

@@ -38,60 +38,61 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    ---@param opts Xray.lspconfigOpts
-    opts = function(_, opts)
-      opts.servers = opts.servers or {}
-      ---@type vim.lsp.Config
-      opts.servers["tsgo"] = {
-        init_options = {
-          preferences = {
-            importModuleSpecifierPreference = "shortest",
-          },
-        },
-        ---@module "lspconfig"
-        ---@type lspconfig.settings.ts_ls
-        settings = {
-          typescript = {
-            inlayHints = {
-              includeInlayEnumMemberValueHints = false,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayVariableTypeHints = false,
+    ---@module "xrayya.core.modules.lsp"
+    ---@type Xray.lspconfigOpts
+    opts = {
+      enable_servers = {
+        tsgo = {
+          init_options = {
+            preferences = {
+              importModuleSpecifierPreference = "shortest",
             },
           },
-          javascript = {
-            inlayHints = {
-              includeInlayEnumMemberValueHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayParameterNameHints = "all",
-              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayVariableTypeHints = true,
-            },
-          },
-        },
-        on_attach = function(client, bufnr)
-          -- ts_ls provides `source.*` code actions that apply to the whole file. These only appear in
-          -- `vim.lsp.buf.code_action()` if specified in `context.only`.
-          vim.api.nvim_buf_create_user_command(bufnr, "LspTypescriptSourceAction", function()
-            local source_actions = vim.tbl_filter(function(action)
-              return vim.startswith(action, "source.")
-            end, client.server_capabilities.codeActionProvider.codeActionKinds)
-
-            vim.lsp.buf.code_action({
-              context = {
-                only = source_actions,
-                diagnostics = {},
+          ---@module "lspconfig"
+          ---@type lspconfig.settings.ts_ls
+          settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = false,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = false,
               },
-            })
-          end, {})
-        end,
-      }
-    end,
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = true,
+              },
+            },
+          },
+          on_attach = function(client, bufnr)
+            -- ts_ls provides `source.*` code actions that apply to the whole file. These only appear in
+            -- `vim.lsp.buf.code_action()` if specified in `context.only`.
+            vim.api.nvim_buf_create_user_command(bufnr, "LspTypescriptSourceAction", function()
+              local source_actions = vim.tbl_filter(function(action)
+                return vim.startswith(action, "source.")
+              end, client.server_capabilities.codeActionProvider.codeActionKinds)
+
+              vim.lsp.buf.code_action({
+                context = {
+                  only = source_actions,
+                  diagnostics = {},
+                },
+              })
+            end, {})
+          end,
+        },
+      },
+    },
   },
   {
     {
@@ -99,6 +100,28 @@ return {
       opts = {
         clients = {
           ["tsgo"] = true,
+        },
+      },
+    },
+  },
+  {
+    "folke/noice.nvim",
+    ---@type NoiceConfig
+    opts = {
+      routes = {
+        {
+          filter = {
+            event = "msg_show",
+            find = 'Decoration provider %"win%" %(ns=nvim%.lsp%.inlayhint%):',
+          },
+          opts = { skip = true }, -- Drop the message completely
+        },
+        {
+          filter = {
+            event = "lsp",
+            find = "Invalid 'col': out of range",
+          },
+          opts = { skip = true },
         },
       },
     },

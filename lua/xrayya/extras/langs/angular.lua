@@ -16,6 +16,16 @@ return {
     opts = { ensure_installed = { "angularls" } },
   },
   {
+    "neovim/nvim-lspconfig",
+    ---@module "xrayya.core.modules.lsp"
+    ---@type Xray.lspconfigOpts
+    opts = {
+      enable_servers = {
+        angularls = {},
+      },
+    },
+  },
+  {
     {
       "ray-d-song/inlay-hint-trim.nvim",
       opts = {
@@ -27,6 +37,7 @@ return {
   },
   {
     "folke/noice.nvim",
+    ---@module "noice"
     ---@type NoiceConfig
     opts = {
       routes = {

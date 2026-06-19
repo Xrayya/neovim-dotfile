@@ -17,15 +17,16 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    ---@param opts Xray.lspconfigOpts
-    opts = function(_, opts)
-      opts.servers = opts.servers or {}
-      ---@type vim.lsp.Config
-      opts.servers["html"] = {
-        filetypes = { "html", "htmlangular" },
-      }
-      opts.servers["cssls"] = {}
-      opts.servers["emmet_ls"] = {}
-    end,
+    ---@module "xrayya.core.modules.lsp"
+    ---@type Xray.lspconfigOpts
+    opts = {
+      enable_servers = {
+        html = {
+          filetypes = { "html", "htmlangular" },
+        },
+        cssls = {},
+        emmet_ls = {},
+      },
+    },
   },
 }

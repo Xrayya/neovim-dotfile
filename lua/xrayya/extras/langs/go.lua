@@ -17,25 +17,26 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    ---@param opts Xray.lspconfigOpts
-    opts = function(_, opts)
-      opts.servers = opts.servers or {}
-      ---@type vim.lsp.Config
-      opts.servers["gopls"] = {
-        settings = {
-          gopls = {
-            hints = {
-              assignVariableTypes = true,
-              compositeLiteralFields = true,
-              compositeLiteralTypes = true,
-              constantValues = true,
-              functionTypeParameters = true,
-              parameterNames = true,
-              rangeVariableTypes = true,
+    ---@module "xrayya.core.modules.lsp"
+    ---@type Xray.lspconfigOpts
+    opts = {
+      enable_servers = {
+        gopls = {
+          settings = {
+            gopls = {
+              hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+              },
             },
           },
         },
-      }
-    end,
+      },
+    },
   },
 }

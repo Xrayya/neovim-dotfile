@@ -43,14 +43,15 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    ---@param opts Xray.lspconfigOpts
-    opts = function(_, opts)
-      opts.servers = opts.servers or {}
-      ---@type vim.lsp.Config
-      opts.servers["clangd"] = {
-        cmd = cmd,
-      }
-    end,
+    ---@module "xrayya.core.modules.lsp"
+    ---@type Xray.lspconfigOpts
+    opts = {
+      enable_servers = {
+        clangd = {
+          cmd = cmd,
+        },
+      },
+    },
   },
   {
     "nvim-treesitter/nvim-treesitter",

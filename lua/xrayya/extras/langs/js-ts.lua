@@ -38,43 +38,44 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    ---@param opts Xray.lspconfigOpts
-    opts = function(_, opts)
-      opts.servers = opts.servers or {}
-      ---@type vim.lsp.Config
-      opts.servers["ts_ls"] = {
-        init_options = {
-          preferences = {
-            importModuleSpecifierPreference = "shortest",
-          },
-        },
-        ---@module "lspconfig"
-        ---@type lspconfig.settings.ts_ls
-        settings = {
-          typescript = {
-            inlayHints = {
-              includeInlayEnumMemberValueHints = false,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayVariableTypeHints = false,
+    ---@module "xrayya.core.modules.lsp"
+    ---@type Xray.lspconfigOpts
+    opts = {
+      enable_servers = {
+        ts_ls = {
+          init_options = {
+            preferences = {
+              importModuleSpecifierPreference = "shortest",
             },
           },
-          javascript = {
-            inlayHints = {
-              includeInlayEnumMemberValueHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayParameterNameHints = "all",
-              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayVariableTypeHints = true,
+          ---@module "lspconfig"
+          ---@type lspconfig.settings.ts_ls
+          settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = false,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = false,
+              },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = true,
+              },
             },
           },
         },
-      }
-    end,
+      },
+    },
   },
 }
