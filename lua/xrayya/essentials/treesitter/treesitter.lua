@@ -45,7 +45,7 @@ return {
           group = vim.api.nvim_create_augroup("TreesitterHighlight", { clear = true }),
           callback = function(args)
             if not buf_utils.is_large_buf(args.buf) then
-              vim.treesitter.start()
+              vim.treesitter.start(args.buf)
             end
           end,
         })
@@ -84,7 +84,7 @@ return {
           group = vim.api.nvim_create_augroup("TreesitterFold", { clear = true }),
           callback = function(args)
             if not buf_utils.is_large_buf(args.buf) then
-              vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+              vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
             end
           end,
         })
