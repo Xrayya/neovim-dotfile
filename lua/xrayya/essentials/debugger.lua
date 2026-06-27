@@ -111,6 +111,12 @@ return {
           enabled = true,
         },
       },
+      virtual_text = {
+        enabled = true,
+      },
+      hover = {
+        border = "rounded",
+      },
     },
     config = function(_, opts)
       local dapview = require("dap-view")
@@ -125,18 +131,25 @@ return {
           dapview.open()
         end
       end
+
+      local is_ok_wk, whichkey = pcall(require, "which-key")
+      if is_ok_wk then
+        local icon = require("xrayya.icons").debugger.UI
+        whichkey.add({ "<Leader>du", group = "Debugger UI", icon = icon })
+      end
+
+      ---@param lhs string
+      ---@param rhs string|fun()
+      ---@param desc string
+      local function map(lhs, rhs, desc)
+        vim.keymap.set("n", lhs, rhs, { desc = desc })
+      end
+
+      map("<Leader>duh", function()
+        dapview.hover(nil, true)
+      end, "Enter hover")
+      map("<Leader>dut", dapview.toggle, "Toggle UI")
+      map("<Leader>duv", dapview.virtual_text_toggle, "Toggle virtual text")
     end,
-  },
-  {
-    "theHamsta/nvim-dap-virtual-text",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-    ---@module "nvim-dap-virtual-text"
-    ---@type nvim_dap_virtual_text_options
-    opts = {
-      only_first_definition = false,
-      all_references = true,
-    },
   },
 }

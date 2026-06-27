@@ -90,6 +90,7 @@ local M = {
     BreakPointLog = "",
     BreakPointActive = "",
     BreakPointRejected = "",
+    UI = "",
   },
   -- stylua: ignore
   ui = {
