@@ -145,6 +145,7 @@ local M = {
     Help          = " ",
     Input         = "󰥻 ",
     Scissor       = "󰩫 ",
+    HammerWrench  = "󱌣"
   },
   -- stylua: ignore
   misc = {
