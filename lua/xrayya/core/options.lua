@@ -47,6 +47,7 @@ set.shortmess:append("c")
 set.termguicolors = true
 set.foldlevel = 99
 set.foldlevelstart = 99
+set.statuscolumn = " %l %s"
 vim.opt.fillchars:append({
   fold = " ",
   foldopen = "",
