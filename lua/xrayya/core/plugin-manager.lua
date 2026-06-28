@@ -78,6 +78,6 @@ require("lazy").setup({
     },
   },
   install = {
-    colorscheme = { "tokyonight" },
+    colorscheme = { "tiede" },
   },
 })
