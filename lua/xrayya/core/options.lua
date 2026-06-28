@@ -51,7 +51,14 @@ set.foldlevelstart = 99
 local statuscol_cache = {}
 
 -- Clear the cache when text changes or when switching buffers
-vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI", "BufEnter" }, {
+vim.api.nvim_create_autocmd({
+  "DiagnosticChanged", -- Wipes cache instantly when LSP diagnostics update
+  "User",
+  "TextChanged",
+  "TextChangedI",
+  "BufEnter",
+}, {
+  group = vim.api.nvim_create_augroup("StatusColCacheClear", { clear = true }),
   callback = function()
     statuscol_cache = {}
   end,

@@ -24,6 +24,10 @@ return {
 
       local debugger_icons = require("xrayya.icons").debugger
 
+      vim.api.nvim_set_hl(0, "DapError", { link = "DiagnosticSignError" })
+      vim.api.nvim_set_hl(0, "DapInfo", { link = "DiagnosticSignInfo" })
+      vim.api.nvim_set_hl(0, "DapWarn", { link = "DiagnosticSignWarn" })
+
       ---@param name string
       ---@param icon string
       ---@param hl string
@@ -31,11 +35,11 @@ return {
         vim.fn.sign_define(name, { text = icon, texthl = hl, linehl = "", numhl = "" })
       end
 
-      set_dap_sign("DapBreakpoint", debugger_icons.BreakPoint, "DiagnosticSignError")
-      set_dap_sign("DapBreakpointCondition", debugger_icons.BreakPointConditional, "DiagnosticSignError")
-      set_dap_sign("DapBreakpointRejected", debugger_icons.BreakPointRejected, "DiagnosticSignInfo")
-      set_dap_sign("DapLogPoint", debugger_icons.BreakPointLog, "DiagnosticSignError")
-      set_dap_sign("DapStopped", debugger_icons.BreakPointActive, "DiagnosticSignWarn")
+      set_dap_sign("DapBreakpoint", debugger_icons.BreakPoint, "DapError")
+      set_dap_sign("DapBreakpointCondition", debugger_icons.BreakPointConditional, "DapError")
+      set_dap_sign("DapBreakpointRejected", debugger_icons.BreakPointRejected, "DapInfo")
+      set_dap_sign("DapLogPoint", debugger_icons.BreakPointLog, "DapError")
+      set_dap_sign("DapStopped", debugger_icons.BreakPointActive, "DapWarn")
 
       ---@param lhs string
       ---@param rhs string|fun()
