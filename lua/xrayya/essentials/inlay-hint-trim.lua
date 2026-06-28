@@ -5,5 +5,4 @@ return {
   config = function(_, opts)
     require("inlay-hint-trim").setup(opts)
   end,
-  opts_extend = { "clients" },
 }
