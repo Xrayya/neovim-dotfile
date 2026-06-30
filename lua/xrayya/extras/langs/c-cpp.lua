@@ -9,6 +9,7 @@ local cmd = {
   "--background-index",
   "--pch-storage=memory",
   "--clang-tidy",
+  "--completion-style=detailed"
 }
 
 if query_driver ~= nil then
