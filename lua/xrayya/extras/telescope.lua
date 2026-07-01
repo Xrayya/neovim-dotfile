@@ -160,7 +160,7 @@ return {
         desc = "Commands",
       },
       {
-        "<leader>fH",
+        "<leader>fC",
         function()
           require("telescope.builtin").command_history()
         end,
@@ -192,7 +192,7 @@ return {
         function()
           require("telescope.builtin").keymaps()
         end,
-        desc = "Keymapts",
+        desc = "Keymaps",
       },
       {
         "<Leader>fq",
