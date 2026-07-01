@@ -192,32 +192,45 @@ return {
   { import = "xrayya.extras.aerial" },
   { import = "xrayya.extras.colorizer" },
   { import = "xrayya.extras.todo-comment" },
-  { import = "xrayya.extras.external" },
+  { import = "xrayya.extras.external.cord" },
   { import = "xrayya.extras.lazygit" },
   { import = "xrayya.extras.tmux" },
   { import = "xrayya.extras.ui.undo-glow" },
   { import = "xrayya.extras.markdown-preview" },
+  { import = "xrayya.extras.render-markdown" },
+  { import = "xrayya.extras.checkmate" },
 
   { import = "xrayya.extras.langs.lua" },
   { import = "xrayya.extras.langs.html-css" },
   { import = "xrayya.extras.langs.tailwindcss" },
-  { import = "xrayya.extras.langs.js-ts-typescript-tools" },
+  -- { import = "xrayya.extras.langs.js-ts" },
+  -- { import = "xrayya.extras.langs.js-ts-typescript-tools" },
+  { import = "xrayya.extras.langs.js-ts-tsgo" },
+  -- { import = "xrayya.extras.langs.angular" },
+  { import = "xrayya.extras.langs.eslint" },
   { import = "xrayya.extras.langs.json" },
   { import = "xrayya.extras.langs.yaml" },
   { import = "xrayya.extras.langs.c-cpp" },
+  { import = "xrayya.extras.langs.go" },
   { import = "xrayya.extras.langs.java-java" },
-  { import = "xrayya.extras.langs.python" },
+  -- { import = "xrayya.extras.langs.python" },
   { import = "xrayya.extras.langs.xml" },
   { import = "xrayya.extras.langs.git" },
   { import = "xrayya.extras.langs.bash" },
   { import = "xrayya.extras.langs.ini" },
   { import = "xrayya.extras.langs.kitty" },
   { import = "xrayya.extras.langs.udev" },
+  { import = "xrayya.extras.langs.qml" },
+
+  { import = "xrayya.extras.treesitter.agrolens" },
 
   { import = "xrayya.extras.formatter.stylua" },
   { import = "xrayya.extras.formatter.prettier" },
 
-  {import = "xrayya.extras.debugger.js-chrome-msedge"}
+  -- { import = "xrayya.extras.ai.copilotvim" },
+  { import = "xrayya.extras.ai.codecompanion" },
+
+  { import = "xrayya.extras.debugger.js-chrome-msedge" },
 }
 ```
 
