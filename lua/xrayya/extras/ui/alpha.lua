@@ -21,15 +21,14 @@ return {
     }
 
     dashboard.section.buttons.val = {
-      dashboard.button("f", ui.FindFile .. "  Find file", "<cmd>Telescope find_files<cr>"),
-      -- dashboard.button("p", ui.Project .. "  Find project", "<cmd>Telescope projects<cr>"),
-      dashboard.button("o", ui.RecentFile .. "  Recently used files", "<cmd>Telescope oldfiles<cr>"),
+      dashboard.button("f", ui.FindFile .. "  Find file", "<cmd>FzfLua files<cr>"),
+      dashboard.button("o", ui.RecentFile .. "  Recently used files", "<cmd>FzfLua oldfiles<cr>"),
       dashboard.button("l", ui.Clock2 .. "  Load last session", "<cmd>SessionManager load_current_dir_session<cr>"),
-      dashboard.button("g", ui.GrepString .. "  Find text", "<cmd>Telescope live_grep<cr>"),
+      dashboard.button("g", ui.GrepString .. "  Find text", "<cmd>FzfLua live_grep<cr>"),
       dashboard.button(
         "c",
         ui.Gear .. "  Browse nvim config file",
-        "<cmd>Telescope find_files cwd=" .. vim.fn.stdpath("config") .. "<cr>"
+        "<cmd>FzfLua files cwd=" .. vim.fn.stdpath("config") .. "<cr>"
       ),
       dashboard.button("M", ui.ToolBox .. "  Open Mason Home", "<cmd>Mason<cr>"),
       dashboard.button("P", ui.Socket .. "  Open Plugin Manager", "<cmd>Lazy<cr>"),
