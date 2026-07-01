@@ -43,6 +43,8 @@ return {
         custom_extension.telescope,
         custom_extension.trouble,
         custom_extension.lazygit,
+        custom_extension.fzf_lua,
+        custom_extension.dap_view,
       },
     })
   end,

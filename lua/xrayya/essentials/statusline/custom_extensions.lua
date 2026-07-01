@@ -4,9 +4,12 @@ local custom_extension = {
   telescope = {
     sections = {
       lualine_a = {
-        function()
-          return icons.ui.Telescope .. " Telescope"
-        end,
+        {
+          function()
+            return icons.ui.Telescope .. " Telescope"
+          end,
+          color = { gui = "bold" },
+        },
       },
     },
     filetypes = { "TelescopePrompt" },
@@ -14,9 +17,12 @@ local custom_extension = {
   color_picker = {
     sections = {
       lualine_a = {
-        function()
-          return icons.kind.Color .. " Color Picker"
-        end,
+        {
+          function()
+            return icons.kind.Color .. " Color Picker"
+          end,
+          color = { gui = "bold" },
+        },
       },
     },
     filetypes = { "color-picker" },
@@ -24,9 +30,12 @@ local custom_extension = {
   lspinfo = {
     sections = {
       lualine_a = {
-        function()
-          return icons.ui.LSP .. " LSP Info"
-        end,
+        {
+          function()
+            return icons.ui.LSP .. " LSP Info"
+          end,
+          color = { gui = "bold" },
+        },
       },
     },
     filetypes = { "lspinfo" },
@@ -34,9 +43,12 @@ local custom_extension = {
   null_ls_info = {
     sections = {
       lualine_a = {
-        function()
-          return icons.ui.LSP .. " Null LS Info"
-        end,
+        {
+          function()
+            return icons.ui.LSP .. " Null LS Info"
+          end,
+          color = { gui = "bold" },
+        },
       },
     },
     filetypes = { "null-ls-info" },
@@ -44,9 +56,12 @@ local custom_extension = {
   sagaoutline = {
     sections = {
       lualine_a = {
-        function()
-          return icons.ui.LSP .. " LSP Saga Outline"
-        end,
+        {
+          function()
+            return icons.ui.LSP .. " LSP Saga Outline"
+          end,
+          color = { gui = "bold" },
+        },
       },
     },
     filetypes = { "sagaoutline" },
@@ -54,9 +69,12 @@ local custom_extension = {
   trouble = {
     sections = {
       lualine_a = {
-        function()
-          return "Trouble"
-        end,
+        {
+          function()
+            return "Trouble"
+          end,
+          color = { gui = "bold" },
+        },
       },
     },
     filetypes = { "Trouble" },
@@ -64,9 +82,12 @@ local custom_extension = {
   lazy = {
     sections = {
       lualine_a = {
-        function()
-          return icons.ui.Socket .. " Lazy"
-        end,
+        {
+          function()
+            return icons.ui.Socket .. " Lazy"
+          end,
+          color = { gui = "bold" },
+        },
       },
     },
     filetypes = { "lazy" },
@@ -74,9 +95,12 @@ local custom_extension = {
   mason = {
     sections = {
       lualine_a = {
-        function()
-          return icons.ui.ToolBox .. " Mason"
-        end,
+        {
+          function()
+            return icons.ui.ToolBox .. " Mason"
+          end,
+          color = { gui = "bold" },
+        },
       },
     },
     filetypes = { "mason" },
@@ -84,12 +108,41 @@ local custom_extension = {
   lazygit = {
     sections = {
       lualine_a = {
-        function()
-          return " LazyGit"
-        end,
+        {
+          function()
+            return " LazyGit"
+          end,
+          color = { gui = "bold" },
+        },
       },
     },
     filetypes = { "lazygit" },
+  },
+  fzf_lua = {
+    sections = {
+      lualine_a = {
+        {
+          function()
+            return " Fzf"
+          end,
+          color = { gui = "bold" },
+        },
+      },
+    },
+    filetypes = { "fzf" },
+  },
+  dap_view = {
+    sections = {
+      lualine_a = {
+        {
+          function()
+            return " Dap View"
+          end,
+          color = { gui = "bold" },
+        },
+      },
+    },
+    filetypes = { "dap-view" },
   },
 }
 
