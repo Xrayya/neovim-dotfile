@@ -21,7 +21,7 @@ set.splitbelow = true
 set.splitright = true
 set.conceallevel = 3
 set.signcolumn = "yes:2"
-set.foldcolumn = "0"
+set.foldcolumn = "1"
 set.tabstop = 2
 set.shiftwidth = 2
 set.softtabstop = 2
@@ -47,12 +47,13 @@ set.shortmess:append("c")
 set.termguicolors = true
 set.foldlevel = 99
 set.foldlevelstart = 99
-set.statuscolumn = " %l %s"
+set.statuscolumn = "%C %l%s"
 vim.opt.fillchars:append({
-  fold = " ",
+  fold = "·",
   foldopen = "",
   foldclose = "",
   foldsep = " ",
+  foldinner = " "
 })
 
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
@@ -64,4 +65,3 @@ vim.filetype.add({
     [".*/%.vscode/launch%.json"] = "jsonc",
   },
 })
-
