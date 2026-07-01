@@ -8,6 +8,9 @@ return {
   ---@module "fzf-lua"
   ---@type fzf-lua.Config
   opts = {
+    fzf_opts = {
+      ["--cycle"] = true,
+    },
     keymap = {
       builtin = {
         true,
