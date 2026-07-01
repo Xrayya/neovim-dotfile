@@ -215,6 +215,13 @@ return {
         end,
         desc = "Search in current buffer",
       },
+      {
+        "grl",
+        function()
+          require("telescope.builtin").diagnostics()
+        end,
+        desc = "Open diagnostic list",
+      },
     },
   },
   {
