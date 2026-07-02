@@ -29,6 +29,11 @@ return {
         ["ctrl-q"] = "select-all+accept",
       },
     },
+    winopts = {
+      preview = {
+        horizontal = "right:55%",
+      },
+    },
     ---@type fzf-lua.config.Buffers
     ---@diagnostic disable-next-line: missing-fields
     buffers = {
