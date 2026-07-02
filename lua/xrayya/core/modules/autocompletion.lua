@@ -17,6 +17,17 @@ return {
         ["<C-b>"] = { "scroll_documentation_up", "scroll_signature_up", "fallback" },
         ["<C-f>"] = { "scroll_documentation_down", "scroll_signature_down", "fallback" },
       },
+      cmdline = {
+        keymap = { preset = "cmdline" },
+        completion = {
+          menu = { auto_show = true },
+          list = {
+            selection = {
+              preselect = false,
+            },
+          },
+        },
+      },
       completion = {
         list = {
           selection = {
