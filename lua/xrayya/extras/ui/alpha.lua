@@ -35,14 +35,25 @@ return {
       dashboard.button("Q", ui.Out .. "  Quit Neovim", "<cmd>qa<cr>"),
     }
 
-    local function footer()
-      local total_plugins = #vim.tbl_keys(require("lazy").plugins())
-      local datetime = os.date(ui.Calendar .. " %d-%m-%Y " .. ui.Clock1 .. " %H:%M:%S")
-      return ui.Socket .. " " .. total_plugins .. " plugins " .. datetime
-    end
-
-    dashboard.section.footer.val = footer()
+    dashboard.section.footer.val = ""
 
     alpha.setup(dashboard.opts)
+
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "LazyVimStarted",
+      callback = function()
+        local is_ok, lazy = pcall(require, "lazy")
+        if is_ok then
+          local total_plugins = #vim.tbl_keys(lazy.plugins())
+          local startuptime = lazy.stats().startuptime
+
+          dashboard.section.footer.val =
+            string.format("%s %d plugins %s %.2f ms", ui.Socket, total_plugins, ui.Dashboard, startuptime)
+
+          ---@diagnostic disable-next-line: param-type-mismatch
+          pcall(vim.cmd, "AlphaRedraw")
+        end
+      end,
+    })
   end,
 }
