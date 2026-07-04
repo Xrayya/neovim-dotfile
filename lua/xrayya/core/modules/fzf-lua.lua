@@ -104,16 +104,21 @@ return {
     end
 
     map("grl", FzfLua.lsp_document_diagnostics, "Open diagnostic list")
+
     map("<Leader>b", FzfLua.buffers, "Buffer explorer")
-    map("<leader>fc", FzfLua.commands, "Commands")
-    map("<leader>fC", FzfLua.command_history, "Command history")
+
+    map("<Leader>fc", FzfLua.commands, "Commands")
+    map("<Leader>fC", FzfLua.command_history, "Command history")
     map("<Leader>ff", FzfLua.files, "File")
     map("<Leader>fg", FzfLua.live_grep, "Grep")
     map("<Leader>fh", FzfLua.helptags, "Help")
     map("<leader>fk", FzfLua.keymaps, "Keymaps")
     map("<Leader>fq", FzfLua.quickfix, "Quickfix")
-    map("<leader>fQ", FzfLua.quickfix_stack, "Quickfix history")
-    map("<leader>fs", FzfLua.grep_curbuf, "Search in current buffer")
+    map("<Leader>fQ", FzfLua.quickfix_stack, "Quickfix history")
+    map("<Leader>fs", FzfLua.grep_curbuf, "Search in current buffer")
+
+    map("<Leader>gc", FzfLua.git_commits, "List repo commit")
+    map("<Leader>gC", FzfLua.git_bcommits, "List current buffer commit")
 
     local is_ok, whichkey = pcall(require, "which-key")
     if is_ok then
