@@ -87,7 +87,14 @@ return {
 
     FzfLua.setup(opts)
 
-    FzfLua.register_ui_select()
+    FzfLua.register_ui_select({
+      winopts = {
+        preview = {
+          vertical = "up:60%",
+          layout = "vertical",
+        },
+      },
+    })
 
     vim.lsp.buf.definition = FzfLua.lsp_definitions
     vim.lsp.buf.type_definition = FzfLua.lsp_typedefs
