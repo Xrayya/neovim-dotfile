@@ -92,7 +92,7 @@ vim.keymap.set(
 -- LSP Stuff
 map("n", "grc", function()
   vim.lsp.document_color.color_presentation()
-end, "Format the current buffer")
+end, "Change color presentation")
 map("n", "grd", function()
   vim.lsp.buf.definition()
 end, "Go to definition(s)")
