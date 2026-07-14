@@ -70,6 +70,12 @@ return {
       ---@diagnostic disable-next-line: missing-fields
       symbols = {
         symbol_icons = kind_icons,
+        winopts = {
+          preview = {
+            vertical = "up:60%",
+            layout = "vertical",
+          },
+        },
       },
       ---@diagnostic disable-next-line: missing-fields
       code_actions = {
