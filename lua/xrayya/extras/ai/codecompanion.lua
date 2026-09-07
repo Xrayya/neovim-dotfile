@@ -4,16 +4,10 @@ return {
   {
     "olimorris/codecompanion.nvim",
     dependencies = {
-      "viespejo/cc-adapter-vertex-ai.nvim",
+      {
+        "Xrayya/cc-adapter-vertex-ai.nvim",
+      },
     },
-    init = function()
-      -- Backward compatibility shim: recent versions of codecompanion.nvim moved
-      -- `codecompanion.utils.adapters` to `codecompanion.adapters.utils`.
-      -- cc-adapter-vertex-ai.nvim imports the old module path.
-      package.preload["codecompanion.utils.adapters"] = function()
-        return require("codecompanion.adapters.utils")
-      end
-    end,
     opts = {
       interactions = {
         chat = {
