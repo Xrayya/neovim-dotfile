@@ -41,8 +41,6 @@ local endpoint = region == "global"
 return {
   {
     "milanglacier/minuet-ai.nvim",
-    -- To load from your local cloned repository instead of remote github, uncomment:
-    -- dir = vim.fn.expand("~/WindowsD/my-programming-project/Repos/minuet-ai.nvim"),
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
