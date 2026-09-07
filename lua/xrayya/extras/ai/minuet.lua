@@ -68,8 +68,8 @@ return {
         auto_trigger_ft = {},
         auto_trigger_ignore_ft = {},
         keymap = {
-          accept = "<C-Y>", -- Accept whole completion (matching Copilot habit)
-          accept_line = "<C-y>", -- Accept single line
+          accept = "<C-S-Y>", -- Accept whole completion (matching Copilot habit)
+          accept_line = "<C-Y>", -- Accept single line
           accept_n_lines = "<A-z>", -- Accept n lines
           prev = "<A-[>", -- Previous suggestion
           next = "<A-]>", -- Next suggestion (or trigger if none)
