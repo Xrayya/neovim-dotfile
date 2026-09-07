@@ -23,8 +23,9 @@ local function get_cached_gcloud_token()
 end
 
 -- GCP settings matching codecompanion.lua
-local project_id = "valid_id"
-local region = "global"
+local has_secrets, secrets = pcall(require, "secrets")
+local project_id = has_secrets and secrets.gcp_project_id or "fallback-project-id"
+local region = has_secrets and secrets.gcp_region or "global"
 
 local endpoint = region == "global"
     and string.format(

@@ -20,10 +20,11 @@ return {
       adapters = {
         http = {
           vertex_gemini = function()
+            local has_secrets, secrets = pcall(require, "secrets")
             return require("codecompanion.adapters").extend("vertex-gemini", {
               env = {
-                project_id = "valid_id",
-                region = "global",
+                project_id = has_secrets and secrets.gcp_project_id or "fallback-project-id",
+                region = has_secrets and secrets.gcp_region or "global",
               },
             })
           end,

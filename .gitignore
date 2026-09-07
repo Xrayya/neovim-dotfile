@@ -1,1 +1,2 @@
 lua/extra-config/**
+lua/secrets.lua
