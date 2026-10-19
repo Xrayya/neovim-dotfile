@@ -12,7 +12,14 @@ return {
       if vim.fn.has("unix") and vim.fn.executable("kitty") == 1 then
         dap.defaults.fallback.external_terminal = {
           command = "/usr/bin/kitty",
-          args = { "-e" },
+          args = {
+            "sh",
+            "-c",
+            -- "$@" runs the arguments provided by nvim-dap.
+            -- The 'read' command halts the window until you press Enter.
+            '"$@"; echo ""; echo "Process finished. Press Enter to exit..."; read',
+            "kitty-dap-wrapper",
+          },
         }
       elseif vim.fn.has("win32") == 1 then
         -- WARNING: not tested yet
